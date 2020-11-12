@@ -1,0 +1,72 @@
+// ! *****************************************
+// ! The code structure in this file
+// * Topic name
+// * Examples
+// ! *****************************************
+
+// ! Recursion
+// * The  function calls itself within the definition. The function MUST have a base condition to avoid an infinite loop. The function goes through backtracking after the final/base condition is fulfilled
+
+// ! Factorial using recursion
+factorial = (num) => {
+  if (num == 1) {
+    return num;
+  } else {
+    return num * factorial(num - 1);
+  }
+};
+// console.log(factorial(5));
+
+// ! *****************************************
+// ! Random JavaScript testing and practice
+
+// ! class keyword in ES6
+
+class People {
+  constructor(name, age, profession) {
+    // ! a constructor which runs during instantiation
+    this.name = name;
+    this.age = age;
+    this.profession = profession;
+    this.hobby = "something"; // ! default value, will be changed if a child wants to update the value here
+  }
+
+  // ! an ES6 arrow function is used to write a method as a property of this class. Arrow function lets us use the this keyword appropriately
+  descriptor = () => {
+    console.log(
+      `Hello, I am ${this.name}. I am a ${this.age} years old ${this.profession} and I love ${this.hobby}`
+    );
+  };
+}
+var john = new People("Adya", 25, "developer");
+class Hobby extends People {
+  //! inheritance
+  constructor(name, age, profession, hobby) {
+    super(name, age, profession); //! using the parent class to store values
+    this.hobby = hobby; //! storing values of the child class
+  }
+}
+
+var manas = new Hobby("Manas", 22, "Web developer", "cooking");
+
+// ! Creating an array using javascript new Object() method
+// * creates a blank array of undefined items
+// var arr = new Array(4);
+// console.log(arr, arr.length, arr[0]);
+
+// * joining the elements of an array and turning it into a string
+// var arr = new Array(1, 2, 3, 4);
+// ? use arr.join() if you wish to gvie a specific separator
+// console.log(arr.join(":"));
+// ? use arr.toString() if you wish to simply convert the array into a string
+// console.log(arr.toString());
+
+// * Using array mutator functions push, pop, shift (pop first), unshift (push first), inserting numbers in between the array using splice
+var arr = new Array(1, 2, 3, 4);
+// arr.push(6);
+// arr.pop();
+// arr.shift();
+// arr.unshift(5);
+let nums = [9, 8, 7];
+arr.splice(3, 0, nums);
+console.log(arr);
