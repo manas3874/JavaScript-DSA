@@ -61,12 +61,32 @@ var manas = new Hobby("Manas", 22, "Web developer", "cooking");
 // ? use arr.toString() if you wish to simply convert the array into a string
 // console.log(arr.toString());
 
-// * Using array mutator functions push, pop, shift (pop first), unshift (push first), inserting numbers in between the array using splice
-var arr = new Array(1, 2, 3, 4);
+// * Using array mutator functions
+// push
+// pop
+// shift(pop first)
+// unshift(push first)
+// inserting numbers in between the array using splice
+// sort(issue while sorting numerical array)
+// forEach()
+// reduce()
+// map()
+// filter()
+
+//! testing of each function
+var arr = new Array(1, 9, 13, 6, 4);
 // arr.push(6);
 // arr.pop();
 // arr.shift();
 // arr.unshift(5);
-let nums = [9, 8, 7];
-arr.splice(3, 0, nums);
+// let nums = [9, 8, 7];
+// arr.splice(3, 0, nums);
+// arr.sort((a, b) => a - b); // ascending
+// arr.sort((a, b) => b - a); // descending
+// arr.forEach((item) => console.log(item * item)); // takes a simple callback function
+// console.log(arr.reduce((acc, item) => acc + item)); // uses an accumulator, reduces the entire array into a single element
+// console.log(arr.map((item) => item + 5)); // performs certain task on each element of the array and returns a new array
+// console.log(arr.filter((item) => item % 2 == 0)); // returns a new array with only the elements which return "true" for the callback function within filter function
 console.log(arr);
+
+// ! Jagged array is a multidimensional array where the lengths of rows are not uniform
