@@ -291,8 +291,20 @@ class LinkedList {
     newNode.next = afterNode.next;
     afterNode.next = newNode;
   };
-
-  remove = () => {};
+  findPrevious = (item) => {
+    var currentNode = this.head;
+    for (let i = 0; i < this.length + 1; i++) {
+      if (currentNode.next.element == item) {
+        return currentNode;
+      }
+    }
+  };
+  remove = (item) => {
+    --this.length;
+    var previousNode = this.findPrevious(item);
+    var nodeToRemove = this.find(item);
+    previousNode.next = nodeToRemove.next;
+  };
   print = () => {
     var currentNode = this.head;
     var arr = [];
@@ -308,4 +320,5 @@ var linked = new LinkedList();
 linked.insertAfter("manas", "head");
 linked.insertAfter("adya", "manas");
 linked.insertAfter("saloni", "adya");
+linked.remove("adya");
 linked.print();
