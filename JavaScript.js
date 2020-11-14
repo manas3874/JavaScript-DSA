@@ -278,47 +278,153 @@ var manas = new Hobby("Manas", 22, "Web developer", "cooking");
 
 // ! Checking whether the bracketpairs are balanced or not
 
-class BracketStack {
-  constructor() {
-    this._dataStore = [];
-    this.length = 0;
-    this.top = 0;
-  }
-  push = (item) => {
-    ++this.length;
-    ++this.top;
-    this._dataStore.push(item);
-  };
-  pop = () => {
-    --this.length;
-    --this.top;
-    return this._dataStore.pop();
-  };
-}
-var bracket = new BracketStack();
-bracketBalanceChecker = (string) => {
-  let correctObj = {
-    "{": "}",
-    "[": "]",
-    "(": ")",
-  };
-  for (let letter of string) {
-    if (letter == "(" || letter == "[" || letter == "{") {
-      bracket.push(letter);
-    } else if (letter == ")" || letter == "]" || letter == "}") {
-      if (correctObj[bracket.pop()] != letter) {
-        return false;
-      }
-    }
-  }
+// class BracketStack {
+//   constructor() {
+//     this._dataStore = [];
+//     this.length = 0;
+//     this.top = 0;
+//   }
+//   push = (item) => {
+//     ++this.length;
+//     ++this.top;
+//     this._dataStore.push(item);
+//   };
+//   pop = () => {
+//     --this.length;
+//     --this.top;
+//     return this._dataStore.pop();
+//   };
+// }
+// var bracket = new BracketStack();
+// bracketBalanceChecker = (string) => {
+//   let correctObj = {
+//     "{": "}",
+//     "[": "]",
+//     "(": ")",
+//   };
+//   for (let letter of string) {
+//     if (letter == "(" || letter == "[" || letter == "{") {
+//       bracket.push(letter);
+//     } else if (letter == ")" || letter == "]" || letter == "}") {
+//       if (correctObj[bracket.pop()] != letter) {
+//         return false;
+//       }
+//     }
+//   }
 
-  return bracket.length ? false : true;
-};
-// ! test 1
-console.log(
-  bracketBalanceChecker(
-    "[{()()}({[]})]({}[({})])((((((()[])){}))[]{{{({({({{{{{{}}}}}})})})}}}))[][][]"
-  )
-); // true
-// ! test 2
-console.log(bracketBalanceChecker("({(()))}}")); // false
+//   return bracket.length ? false : true;
+// };
+// // ! test 1
+// console.log(
+//   bracketBalanceChecker(
+//     "[{()()}({[]})]({}[({})])((((((()[])){}))[]{{{({({({{{{{{}}}}}})})})}}}))[][][]"
+//   )
+// ); // true
+// // ! test 2
+// console.log(bracketBalanceChecker("({(()))}}")); // false
+
+// ! Page 57 Question 3
+// ! An example of a real-world stack is a Pez dispenser. Imagine that your virtual Pez dispenser is filled with red, yellow, and white colors and you don’t like the yellow ones. Write a program that uses a stack (and maybe more than one) to remove the yellow ones without changing the order of the other candies in the dispenser
+
+// var sample = "RYWWRWYRYYRWYRWWYRYRWYRWYYRYWR"; // rightmost is top, 30 candies, 11 are Y
+
+// class PezStack {
+//   constructor() {
+//     this._dataStore = [];
+//     this.length = 0;
+//   }
+//   push = (element) => {
+//     ++this.length;
+//     this._dataStore.push(element);
+//   };
+//   pop = () => {
+//     --this.length;
+//     return this._dataStore.pop();
+//   };
+// }
+
+// // ! using 3 instances of a stack
+// var original = new PezStack(); // putting the sample in a stack
+// var temp = new PezStack(); // removing the Y candies
+// var required = new PezStack(); // making a required stack since the elements were reversed
+
+// for (let letter of sample) {
+//   original.push(letter);
+// }
+
+// removeYellow = (originalStack, tempStack, requiredStack) => {
+//   let length = originalStack.length;
+//   for (let i = 0; i < length; i++) {
+//     let current = originalStack.pop();
+//     if (current != "Y") {
+//       tempStack.push(current);
+//     } else {
+//       continue;
+//     }
+//   }
+//   length = tempStack.length;
+//   for (let i = 0; i < length; i++) {
+//     requiredStack.push(tempStack.pop());
+//   }
+
+//   return requiredStack;
+// };
+// console.log(removeYellow(original, temp, required));
+
+// ! Perforn Radix sort using queues
+// ! not the most efficient sorting algorithm
+// ! This was being used in the earlier days of computer science
+
+
+// class RadixQueue {
+//   constructor() {
+//     this._dataStore = [];
+//     this.length = 0;
+//   }
+//   enqueue = (element) => {
+//     this._dataStore.push(element);
+//     ++this.length;
+//   };
+//   dequeue = () => {
+//     --this.length;
+//     return this._dataStore.shift();
+//   };
+//   print = () => {
+//     console.log(this._dataStore);
+//   };
+// }
+
+// var sample = [12, 55, 67, 45, 23, 69, 34, 6, 51, 70, 99, 28, 45];
+// var queues = [];
+// for (let i = 0; i < 10; i++) {
+//   queues[i] = new RadixQueue();
+// }
+
+// distributor = (sample, queues, length, digit) => {
+//   console.log("in distributor");
+//   for (let i = 0; i < length; i++) {
+//     if (digit == 1) {
+//       queues[sample[i] % 10].enqueue(sample[i]);
+//     } else if (digit == 10) {
+//       queues[Math.floor(sample[i] / 10)].enqueue(sample[i]);
+//     }
+//   }
+// };
+
+// collector = (queues) => {
+//   console.log("in collector");
+//   let dummyArray = [];
+//   for (let queue of queues) {
+//     let length = queue.length;
+//     for (let i = 0; i < length; i++) {
+//       dummyArray.push(queue.dequeue());
+//     }
+//   }
+//   return dummyArray;
+// };
+// distributor(sample, queues, sample.length, 1);
+// samples = collector(queues);
+// console.log(samples);
+// distributor(sample, queues, sample.length, 10);
+// samples = collector(queues);
+// console.log(samples);
