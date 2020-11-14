@@ -239,10 +239,73 @@ class Deque {
     this._dataStore = [];
     this.length = 0;
   }
-  addFront = () => {};
-  removeFront = () => {};
-  addBack = () => {};
-  removeBack = () => {};
-  print = () => {};
+  addFront = (element) => {
+    this._dataStore.unshift(element);
+    ++this.length;
+  };
+  removeFront = () => {
+    --this.length;
+    return this._dataStore.shift();
+  };
+  addBack = (element) => {
+    this._dataStore.push(element);
+    ++this.length;
+  };
+  removeBack = () => {
+    --this.length;
+    return this._dataStore.pop();
+  };
+  print = () => {
+    console.log(this._dataStore);
+  };
   //* other methods can be added as per the requirement
 }
+
+var dequeExample = new Deque();
+
+// ! Linked list is a much better version of a list compared to arrays as arrays can be really inefficient
+// ! LinkedLists have nodes, each node has some information and a LINK to the next node.
+
+// * Node constructor
+function Node(element) {
+  this.element = element;
+  this.next = null;
+}
+
+class LinkedList {
+  constructor() {
+    this.head = new Node("head");
+    this.length = 0;
+  }
+  find = (item) => {
+    var currentNode = this.head;
+    while (currentNode.element != item) {
+      currentNode = currentNode.next;
+    }
+    return currentNode;
+  };
+  insertAfter = (newElement, afterItem) => {
+    ++this.length;
+    var newNode = new Node(newElement);
+    var afterNode = this.find(afterItem);
+    newNode.next = afterNode.next;
+    afterNode.next = newNode;
+  };
+
+  remove = () => {};
+  print = () => {
+    var currentNode = this.head;
+    var arr = [];
+    for (let i = 0; i < this.length + 1; i++) {
+      arr.push(currentNode.element);
+      currentNode = currentNode.next;
+    }
+    console.log(arr);
+  };
+}
+
+var linked = new LinkedList();
+linked.insertAfter("manas", "head");
+linked.insertAfter("adya", "manas");
+linked.insertAfter("saloni", "adya");
+linked.print();
