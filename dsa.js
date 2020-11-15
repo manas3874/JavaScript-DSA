@@ -609,6 +609,7 @@ class CircularDoublyLinkedList {
     }
   };
 
+  
   advanceFrom = (startingNode, steps) => {
     var currentNode = this.find(startingNode);
     if (steps > 0) {
