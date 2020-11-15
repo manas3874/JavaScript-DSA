@@ -352,9 +352,9 @@ linked.insertAfter("adya", "manas");
 linked.insertAfter("saloni", "adya");
 linked.insertAfter("punita", "saloni");
 linked.insertAfter("ajai", "punita");
-console.log(linked.findPrevious("ajai"));
+// console.log(linked.findPrevious("ajai"));
 // linked.remove("manas");
-linked.print();
+// linked.print();
 
 // ! ***********************************************************************************************************************
 // ! DOUBLY LINKED LIST
@@ -447,8 +447,8 @@ DL.insertAfter("adya", "manas");
 DL.insertAfter("saloni", "adya");
 // DL.remove("manas")
 // console.log(DL.findLast());
-DL.print();
-DL.reverse();
+// DL.print();
+// DL.reverse();
 
 // ! ***********************************************************************************************************************
 // ! CIRCULAR LINKED LIST
@@ -523,7 +523,7 @@ cList.insertAfter("manas", "head");
 cList.insertAfter("adya", "manas");
 cList.insertAfter("saloni", "adya");
 cList.insertAfter("punita", "saloni");
-cList.print();
+// cList.print();
 
 // ! ***********************************************************************************************************************
 // ! CIRCULAR DOUBLY LINKED LIST
@@ -650,9 +650,9 @@ cdll.insertAfter("manas", "head");
 cdll.insertAfter("adya", "manas");
 cdll.insertAfter("saloni", "adya");
 cdll.insertAfter("ajai", "saloni");
-cdll.print();
+// cdll.print();
 // console.log(cdll.advance(3));
-console.log(cdll.advanceFrom("manas", 2));
+// console.log(cdll.advanceFrom("manas", 2));
 
 // ! ***********************************************************************************************************************
 // ! SETS
@@ -802,6 +802,8 @@ set4.add(4);
 set4.add(5);
 // set1.print();
 // set2.print();
-console.log(set1.union(set2));
-console.log(set1.intersection(set2));
-console.log(set1.difference(set2));
+// console.log(set1.union(set2));
+// console.log(set1.intersection(set2));
+// console.log(set1.difference(set2));
+
+
