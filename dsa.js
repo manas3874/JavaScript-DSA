@@ -663,6 +663,9 @@ class Set {
   constructor() {
     this.items = {};
   }
+  length = () => {
+    return Object.keys(this.items).length;
+  };
   has = (item) => {
     return item in this.items;
   };
@@ -759,10 +762,23 @@ class Set {
   difference = (set) => {
     return this.intersection(set, true);
   };
+
+  // ! this method will consider the argument as the parent set to check for a subset
+  isSubsetOf = (set) => {
+    var localItems = Object.keys(this.items);
+    for (let item of localItems) {
+      if (!(item in set.items)) {
+        return false;
+      }
+    }
+    return true;
+  };
 }
 
 var set1 = new Set();
 var set2 = new Set();
+var set3 = new Set();
+var set4 = new Set();
 set1.add(1);
 set1.add(2);
 set1.add(3);
@@ -775,6 +791,15 @@ set2.add(6);
 set2.add(7);
 set2.add(8);
 
+set3.add(1);
+set3.add(2);
+set3.add(3);
+
+set4.add(1);
+set4.add(2);
+set4.add(3);
+set4.add(4);
+set4.add(5);
 // set1.print();
 // set2.print();
 console.log(set1.union(set2));
