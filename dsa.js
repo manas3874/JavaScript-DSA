@@ -1,9 +1,21 @@
-// ! ***************************************************************************
+// ! ***********************************************************************************************************************
 // ! The code structure in this file
 // * Topic name
-// * Examples
-// ! ***************************************************************************
-
+// * Examples and implementations
+// ! ***********************************************************************************************************************
+// ! CONTENTS
+// * 1. RECURSION
+// * 2. LIST
+// * 3. STACK
+// * 4. QUEUE
+// * 5. PRIORITY QUEUE
+// * 6. DEQUE
+// * 7. LINKED LIST
+// * 8. DOUBLY LINKED LIST
+// * 9. CIRCULAR SINGLY LINKED LIST
+// * 10. CIRCULAR DOUBLY LINKED LIST
+// * 11. SETS
+// ! ***********************************************************************************************************************
 // ! Recursion
 // * The  function calls itself within the definition. The function MUST have a base condition to avoid an infinite loop. The function goes through backtracking after the final/base condition is fulfilled
 
@@ -17,7 +29,7 @@ factorial = (num) => {
 };
 // console.log(factorial(5));
 
-// ! ***************************************************************************
+// ! ***********************************************************************************************************************
 // ! List
 // * The list is a basic datastructure found in any programming language. The numebr of elements in a list determines the length of a list. We can perform multiple tasks like add, remove, read, insert, print, check within the list, etc.
 
@@ -110,7 +122,7 @@ class List {
 
 var groceries = new List();
 
-// ! ***************************************************************************
+// ! ***********************************************************************************************************************
 // ! STACK
 // * One of the most basic and fundamental datastructure. The stack works in LIFO manner and mimics a pile of books, stack of trays, or most importantly - the call stack
 
@@ -146,7 +158,7 @@ class Stack {
 
 let books = new Stack();
 
-// ! ***************************************************************************
+// ! ***********************************************************************************************************************
 // ! QUEUE
 // * QUEUE is another most important datastructure. This works on a FIFO model. Basically like a queue at a grocery store during the lockdown.
 
@@ -183,6 +195,7 @@ class Queue {
 
 let bank = new Queue();
 
+// ! ***********************************************************************************************************************
 // ! Priority Queue
 // ! The elements of a queue will also have a priority state. Higher priority elements will be dequeued earlier. However, the elements of the same priority state will be dequeued on the basis of FIFO
 
@@ -231,6 +244,7 @@ hospital.enqueue(new Patient("jimmy", 3));
 hospital.enqueue(new Patient("carl", 2));
 // hospital.print();
 
+// ! ***********************************************************************************************************************
 // ! DEQUE
 // ! Deque is a queue like structure which lets us add/remove elements from the front or the back
 
@@ -263,6 +277,8 @@ class Deque {
 
 var dequeExample = new Deque();
 
+// ! ***********************************************************************************************************************
+// ! LINKED LIST
 // ! Linked list is a much better version of a list compared to arrays as arrays can be really inefficient
 // ! LinkedLists have nodes, each node has some information and a LINK to the next node.
 
@@ -340,6 +356,8 @@ console.log(linked.findPrevious("ajai"));
 // linked.remove("manas");
 linked.print();
 
+// ! ***********************************************************************************************************************
+// ! DOUBLY LINKED LIST
 // ! Doubly linked list is a datastructure in which each node has has some information, a reference to the previous node and a reference to the next node.
 // ! Singly linked list allows us to traverse from the head to tail easily but reverse traversal is difficult and resource heavy.. for such situations, we may use doubly linked list
 
@@ -432,6 +450,7 @@ DL.insertAfter("saloni", "adya");
 DL.print();
 DL.reverse();
 
+// ! ***********************************************************************************************************************
 // ! CIRCULAR LINKED LIST
 // ! Doubly linked list solves the problem of reverse traversal, but it is still a single ordered traversal.
 // ! Circular linked list helps us to loop through the list once the last element is reached. Basically, the last element does not point to null, instead it points to the head element
@@ -506,7 +525,8 @@ cList.insertAfter("saloni", "adya");
 cList.insertAfter("punita", "saloni");
 cList.print();
 
-// ! Circular Doubly linked list
+// ! ***********************************************************************************************************************
+// ! CIRCULAR DOUBLY LINKED LIST
 // ! The most useful and most efficient of the linkedLists is the circular doubly linked list
 
 function CDNode(element) {
@@ -634,6 +654,7 @@ cdll.print();
 // console.log(cdll.advance(3));
 console.log(cdll.advanceFrom("manas", 2));
 
+// ! ***********************************************************************************************************************
 // ! SETS
 // ! Set is a mathematical property/ a group of items with no repetitions
 // ! ES6 gives us the Set object but we can implement our own with the most important union, intersection and difference methods
