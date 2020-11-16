@@ -371,7 +371,7 @@ var manas = new Hobby("Manas", 22, "Web developer", "cooking");
 // };
 // console.log(removeYellow(original, temp, required));
 
-// ! Perforn Radix sort using queues
+// ! Perform Radix sort using queues
 // ! not the most efficient sorting algorithm
 // ! This was being used in the earlier days of computer science
 
