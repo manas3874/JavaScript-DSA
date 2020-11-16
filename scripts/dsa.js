@@ -806,4 +806,65 @@ set4.add(5);
 // console.log(set1.intersection(set2));
 // console.log(set1.difference(set2));
 
+// ! HASH TABLES
+// ! Hash table is a great datastructure which helps in creating/updating and retrieving data in constant time (best case) or linear time (worst case)
+// ! This datastructure basically has indexing, and any element which has to be stored in the hash table will go through a hashing function which will give the appropriate index to store the element
+// ! while retrieving the element, the same hashing function is used to hit the index position accurately.
+// ! The element can be any data-structure, can be a reference to an object, linkedlist, dictionary, etc.
+// ! Collisions are bound to happen, and there are multiple ways to handle a collision while making a HASH TABLE
 
+class HashTable {
+  constructor() {
+    this.table = new Array(137); // usually a prime number is taken as the length of the array, since it helps with the most used modular hash functions
+  }
+  // ! This hash function will be used to determine the location of data in our array
+  simpleHash = (key) => {
+    // ! this hash function is for string keys.
+    var total = 0;
+    for (let i = 0; i < key.length; i++) {
+      total += key.charCodeAt(i); // ! summing all the ascii values of the string key
+    }
+    // ! collision avoiding method 1 - open addressing - give the next available slot
+
+    for (let i = 0; i < this.table.length; i++) {
+      if (this.table[total % this.table.length] == undefined) {
+        return total % this.table.length;
+      } else {
+        total += 1;
+      }
+    }
+
+    // ! collision avoiding method 2 - closed addressing - linked list of elements with same hash key
+  };
+
+  put = (key, data) => {
+    var position = this.simpleHash(key);
+    this.table[position] = data;
+  };
+
+  printDistribution = () => {
+    var distro = {};
+    for (let i = 0; i < this.table.length; i++) {
+      if (this.table[i] != undefined) {
+        distro[i] = this.table[i];
+      }
+    }
+    console.log(distro);
+  };
+}
+
+// ! college information constructor
+function information(name, age, grade) {
+  this.name = name;
+  this.age = age;
+  this.grade = grade;
+}
+
+var hash = new HashTable();
+hash.put("manas", new information("manas", 22, 96));
+hash.put("john", new information("john", 32, 76));
+hash.put("josh", new information("josh", 25, 88));
+hash.put("pixcy", new information("pixcy", 62, 42));
+hash.put("Clayton", new information("Clayton", 32, 92));
+hash.put("Raymond", new information("Raymond", 27, 71));
+hash.printDistribution();
