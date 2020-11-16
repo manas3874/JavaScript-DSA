@@ -307,12 +307,23 @@ class LinkedList {
       console.warn("element not found");
     }
   };
+
   insertAfter = (newElement, afterItem) => {
     ++this.length;
     var newNode = new Node(newElement);
     var afterNode = this.find(afterItem);
     newNode.next = afterNode.next;
     afterNode.next = newNode;
+  };
+  insertLast = (element) => {
+    var newNode = new Node(element);
+    ++this.length;
+    var currentNode = this.head;
+    while (currentNode.next != null) {
+      currentNode = currentNode.next;
+    }
+    currentNode.next = newNode;
+    newNode.next = null;
   };
   findPrevious = (item) => {
     var currentNode = this.head;
@@ -342,19 +353,21 @@ class LinkedList {
     }
     // * adding the final element which was neglected by the while loop
     arr.push(currentNode.element);
-    console.log(arr);
+    return arr;
   };
 }
 
 var linked = new LinkedList();
 linked.insertAfter("manas", "head");
+
 linked.insertAfter("adya", "manas");
 linked.insertAfter("saloni", "adya");
+linked.insertLast("josh");
 linked.insertAfter("punita", "saloni");
 linked.insertAfter("ajai", "punita");
 // console.log(linked.findPrevious("ajai"));
 // linked.remove("manas");
-// linked.print();
+// console.log(linked.print())
 
 // ! ***********************************************************************************************************************
 // ! DOUBLY LINKED LIST
@@ -824,29 +837,37 @@ class HashTable {
     for (let i = 0; i < key.length; i++) {
       total += key.charCodeAt(i); // ! summing all the ascii values of the string key
     }
-    // ! collision avoiding method 1 - open addressing - give the next available slot
-
-    for (let i = 0; i < this.table.length; i++) {
-      if (this.table[total % this.table.length] == undefined) {
-        return total % this.table.length;
-      } else {
-        total += 1;
-      }
-    }
-
-    // ! collision avoiding method 2 - closed addressing - linked list of elements with same hash key
+    return total % this.table.length;
   };
-
+  // ! Separate Chaining is a way to resolve collision
+  // ! This will build arrays/linked lists as data-holders for all the key locations
+  buildChains = () => {
+    for (let i = 0; i < this.table.length; i++) {
+      this.table[i] = new LinkedList();
+    }
+  };
   put = (key, data) => {
     var position = this.simpleHash(key);
-    this.table[position] = data;
+    this.table[position].insertLast(data);
+  };
+
+  // ! get function is designed to get the exact element from the linked lists
+  get = (key) => {
+    var hashKey = this.simpleHash(key);
+    var currentElement = this.table[hashKey].head;
+    for (let i = 0; i < this.table[hashKey].length; i++) {
+      if (currentElement.element.name != key) {
+        currentElement = currentElement.next;
+      }
+    }
+    return currentElement.element;
   };
 
   printDistribution = () => {
     var distro = {};
     for (let i = 0; i < this.table.length; i++) {
-      if (this.table[i] != undefined) {
-        distro[i] = this.table[i];
+      if (this.table[i].head.next != null) {
+        distro[i] = this.table[i].print();
       }
     }
     console.log(distro);
@@ -861,6 +882,7 @@ function information(name, age, grade) {
 }
 
 var hash = new HashTable();
+hash.buildChains();
 hash.put("manas", new information("manas", 22, 96));
 hash.put("john", new information("john", 32, 76));
 hash.put("josh", new information("josh", 25, 88));
@@ -868,3 +890,8 @@ hash.put("pixcy", new information("pixcy", 62, 42));
 hash.put("Clayton", new information("Clayton", 32, 92));
 hash.put("Raymond", new information("Raymond", 27, 71));
 hash.printDistribution();
+
+// console.log(hash.simpleHash("manas"));
+console.log(hash.get("john"));
+console.log(hash.get("Clayton"));
+console.log(hash.get("Raymond"));
