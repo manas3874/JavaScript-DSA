@@ -7,7 +7,7 @@
 
 import { LinkedList } from "./LinkedLists.js";
 
-class HashTable {
+export class HashTable {
   constructor() {
     this.table = new Array(137); // usually a prime number is taken as the length of the array, since it helps with the most used modular hash functions
   }
@@ -51,7 +51,7 @@ class HashTable {
         distro[i] = this.table[i].print();
       }
     }
-    console.log(distro);
+    return distro;
   };
 }
 
@@ -73,6 +73,6 @@ hash.put("Raymond", new information("Raymond", 27, 71));
 hash.printDistribution();
 
 // console.log(hash.simpleHash("manas"));
-console.log(hash.get("john"));
-console.log(hash.get("Clayton"));
-console.log(hash.get("Raymond"));
+// console.log(hash.get("john"));
+// console.log(hash.get("Clayton"));
+// console.log(hash.get("Raymond"));

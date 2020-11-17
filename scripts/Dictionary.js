@@ -11,7 +11,7 @@ export class Dictionary {
   }
 
   add = (key, value) => {
-    this._dataStore[key] = value;
+    this._dataStore[key] = value; // ! can take string keys since we are using the object nature of arrays
     ++this.length;
   };
   remove = (key) => {
@@ -23,6 +23,7 @@ export class Dictionary {
     return this._dataStore[key];
   };
   // ! SORT ON KEYS
+  // ! works only with string keys
   sortOnKeys = () => {
     var arrOfKeys = Object.keys(this._dataStore);
     arrOfKeys.sort();
@@ -33,6 +34,7 @@ export class Dictionary {
     this._dataStore = tempDict;
   };
   // ! SORT ON VALUES (slightly inefficient at this stage)
+  // ! works only with string values
   sortOnValues = () => {
     var arrOfValues = [];
     for (let item in this._dataStore) {
@@ -49,8 +51,8 @@ export class Dictionary {
     }
     this._dataStore = tempDict;
   };
-  print = () => {
-    console.log(this._dataStore);
+  showDictionary = () => {
+    return this._dataStore;
   };
 }
 
@@ -62,6 +64,7 @@ dict.add("Austin", "developer");
 dict.add("Zenith", "networking");
 dict.add("Kalob", "kubernetes");
 
+// console.log(showDictionary());
 // dict.print();
 // // dict.sortOnKeys();
 // dict.sortOnValues();

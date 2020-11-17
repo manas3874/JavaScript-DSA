@@ -4,7 +4,7 @@
 // * Examples and implementations
 // ! ***********************************************************************************************************************
 // ! CONTENTS
-// * 1. RECURSION
+// * 1. RECURSION (soon to be added)
 // * 2. LIST
 // * 3. STACK
 // * 4. QUEUE
@@ -18,15 +18,3 @@
 // * 12. DICTIONARY
 // * 13. HASH TABLE
 // ! ***********************************************************************************************************************
-// ! Recursion
-// * The  function calls itself within the definition. The function MUST have a base condition to avoid an infinite loop. The function goes through backtracking after the final/base condition is fulfilled
-
-// ! Factorial using recursion
-// factorial = (num) => {
-//   if (num == 1) {
-//     return num;
-//   } else {
-//     return num * factorial(num - 1);
-//   }
-// };
-// console.log(factorial(5));

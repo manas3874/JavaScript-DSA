@@ -375,7 +375,6 @@ var manas = new Hobby("Manas", 22, "Web developer", "cooking");
 // ! not the most efficient sorting algorithm
 // ! This was being used in the earlier days of computer science
 
-
 // class RadixQueue {
 //   constructor() {
 //     this._dataStore = [];
@@ -428,3 +427,58 @@ var manas = new Hobby("Manas", 22, "Web developer", "cooking");
 // distributor(sample, queues, sample.length, 10);
 // samples = collector(queues);
 // console.log(samples);
+
+// ! Write a program using hashing that reads a text file and compiles a list of the words in the file with the number of times each word appears in the file.
+
+// // * Without hashing
+/*var text = "Elephants are mammals of the family Elephantidae and the largest existing land animals. Three species are currently recognised: the African bush elephant, the African forest elephant, and the Asian elephant. Elephantidae is the only surviving family of the order Proboscidea; extinct members include the mastodons. The family Elephantidae also contains several now-extinct groups, including the mammoths and straight-tusked elephants. African elephants have larger ears and concave backs, whereas Asian elephants have smaller ears, and convex or level backs. Distinctive features of all elephants include a long proboscis called a trunk, tusks, large ear flaps, massive legs, and tough but sensitive skin. The trunk is used for breathing, bringing food and water to the mouth, and grasping objects. Tusks, which are derived from the incisor teeth, serve both as weapons and as tools for moving objects and digging. The large ear flaps assist in maintaining a constant body temperature as well as in communication. The pillar-like legs carry their great weight.";
+
+*/
+
+// // var wordFrequency = (text) => {
+// //   var obj = {};
+// //   var textWords = text.toLowerCase().split(" ");
+// //   for (let word of textWords) {
+// //     word.replace(".", "");
+// //     word.replace(",", "");
+// //     word.replace(":", "");
+// //     word.replace(";", "");
+// //     obj[word] ? (obj[word] += 1) : (obj[word] = 1);
+// //   }
+// //   console.log(obj);
+// // };
+
+// // wordFrequency(text);
+
+// // * using dictionary
+
+// import { Dictionary } from "./Dictionary.js";
+
+// var wordFrequency = (text) => {
+//   var textWords = text.toLowerCase().split(" ");
+//   var dict = new Dictionary();
+//   for (let word of textWords) {
+//     dict.showDictionary()[word]
+//       ? (dict._dataStore[word] += 1)
+//       : (dict._dataStore[word] = 1);
+//   }
+
+//   console.log(dict.showDictionary());
+// };
+
+// wordFrequency(text);
+
+// ! Given an array A[] and a number x, check for pair in A[] with sum as x
+
+function pairSum(arr, num) {
+  for (let i = 0; i < arr.length; i++) {
+    for (let j = i + 1; j < arr.length; j++) {
+      if (arr[i] + arr[j] == num) {
+        return `${arr[i]}, ${arr[j]}`;
+      }
+    }
+  }
+  return -1;
+}
+console.log(pairSum([0, -1, 2, -3, 1], -2)); // -3,1
+console.log(pairSum([1, -2, 1, 0, 5], 0)); // -1
