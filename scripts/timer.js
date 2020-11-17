@@ -1,5 +1,5 @@
 export function timer(func) {
-  console.time("timer");
+  console.time("timeTaken");
   func();
-  console.timeEnd("timer");
+  console.timeEnd("timeTaken");
 }

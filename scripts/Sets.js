@@ -2,7 +2,7 @@
 // ! SETS
 // ! Set is a mathematical property/ a group of items with no repetitions
 // ! ES6 gives us the Set object but we can implement our own with the most important union, intersection and difference methods
-
+import { timer } from "./timer.js";
 export class Set {
   constructor() {
     this.items = {};
@@ -170,9 +170,9 @@ set6.add("four");
 // * works with strings as well
 // set5.remove("one");
 // set5.print();
+// timer(set6.print);
 // set6.print();
-import { timer } from "./timer.js";
-timer(() => console.log(set5.union(set6)));
+// timer(() => console.log(set5.union(set6)));
 // console.time("timer");
 // console.log(set5.union(set6));
 // console.timeEnd("timer");
