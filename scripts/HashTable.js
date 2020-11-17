@@ -70,6 +70,7 @@ hash.put("josh", new information("josh", 25, 88));
 hash.put("pixcy", new information("pixcy", 62, 42));
 hash.put("Clayton", new information("Clayton", 32, 92));
 hash.put("Raymond", new information("Raymond", 27, 71));
+hash.put("walter", new information("walter", 47, 81));
 hash.printDistribution();
 
 // console.log(hash.simpleHash("manas"));
