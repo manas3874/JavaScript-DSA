@@ -17,6 +17,7 @@ export class Set {
   add = (item) => {
     if (!this.has(item)) {
       this.items[item] = item;
+
       return true;
     }
     return false;
@@ -117,12 +118,18 @@ export class Set {
     }
     return true;
   };
+
+  remove = (item) => {
+    delete this.items[item];
+  };
 }
 
 var set1 = new Set();
 var set2 = new Set();
 var set3 = new Set();
 var set4 = new Set();
+var set5 = new Set();
+var set6 = new Set();
 set1.add(1);
 set1.add(2);
 set1.add(3);
@@ -144,8 +151,30 @@ set4.add(2);
 set4.add(3);
 set4.add(4);
 set4.add(5);
+
+set5.add("one");
+set5.add("two");
+set5.add("three");
+
+set6.add("zero");
+set6.add("one");
+set6.add("two");
+set6.add("three");
+set6.add("four");
 // set1.print();
 // set2.print();
 // console.log(set1.union(set2));
 // console.log(set1.intersection(set2));
 // console.log(set1.difference(set2));
+
+// * works with strings as well
+// set5.remove("one");
+// set5.print();
+// set6.print();
+import { timer } from "./timer.js";
+timer(() => console.log(set5.union(set6)));
+// console.time("timer");
+// console.log(set5.union(set6));
+// console.timeEnd("timer");
+// console.log(set5.intersection(set6));
+// console.log(set5.difference(set6));

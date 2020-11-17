@@ -480,5 +480,5 @@ function pairSum(arr, num) {
   }
   return -1;
 }
-console.log(pairSum([0, -1, 2, -3, 1], -2)); // -3,1
-console.log(pairSum([1, -2, 1, 0, 5], 0)); // -1
+// console.log(pairSum([0, -1, 2, -3, 1], -2)); // -3,1
+// console.log(pairSum([1, -2, 1, 0, 5], 0)); // -1
