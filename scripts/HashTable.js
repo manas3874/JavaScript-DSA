@@ -55,6 +55,7 @@ export class HashTable {
   };
 }
 
+
 // ! college information constructor
 function information(name, age, grade) {
   this.name = name;
