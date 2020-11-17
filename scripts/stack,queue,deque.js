@@ -119,7 +119,6 @@ hospital.enqueue(new Patient("josh", 1));
 hospital.enqueue(new Patient("jimmy", 3));
 hospital.enqueue(new Patient("carl", 2));
 // hospital.print();
-
 // ! ***********************************************************************************************************************
 // ! DEQUE
 // ! Deque is a queue like structure which lets us add/remove elements from the front or the back
@@ -150,6 +149,5 @@ export class Deque {
   };
   //* other methods can be added as per the requirement
 }
-
 var dequeExample = new Deque();
 
