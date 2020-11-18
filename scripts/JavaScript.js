@@ -470,15 +470,15 @@ var manas = new Hobby("Manas", 22, "Web developer", "cooking");
 
 // ! Given an array A[] and a number x, check for pair in A[] with sum as x
 
-function pairSum(arr, num) {
-  for (let i = 0; i < arr.length; i++) {
-    for (let j = i + 1; j < arr.length; j++) {
-      if (arr[i] + arr[j] == num) {
-        return `${arr[i]}, ${arr[j]}`;
-      }
-    }
-  }
-  return -1;
-}
+// function pairSum(arr, num) {
+//   for (let i = 0; i < arr.length; i++) {
+//     for (let j = i + 1; j < arr.length; j++) {
+//       if (arr[i] + arr[j] == num) {
+//         return `${arr[i]}, ${arr[j]}`;
+//       }
+//     }
+//   }
+//   return -1;
+// }
 // console.log(pairSum([0, -1, 2, -3, 1], -2)); // -3,1
 // console.log(pairSum([1, -2, 1, 0, 5], 0)); // -1

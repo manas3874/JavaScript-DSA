@@ -6,7 +6,9 @@
 export class List {
   // ? List has 2 properties, length and position, _dataStore is an array to store our data
   constructor() {
-    (this.length = 0), (this.position = 0), (this._dataStore = []);
+    this._dataStore = [];
+    this.length = 0;
+    this.position = 0;
   }
   // ? clears all the contents of the list
   clear = () => {
@@ -16,12 +18,12 @@ export class List {
   };
   // ? console logs the contents of our list
   print = () => {
-    console.log(...this._dataStore);
+    console.log(this._dataStore);
   };
   // ? Returns the element at a specific requested position, returns "not found" if position is empty
   getElement = (position) => {
     if (this._dataStore[position] == undefined) {
-      console.warn("not found");
+      return "not found";
     } else {
       this.position = position;
       return this._dataStore[position];
@@ -31,17 +33,18 @@ export class List {
   append = (element) => {
     this._dataStore[this.length] = element;
     this.length += 1;
-    return "element added";
+    return element;
   };
   // ? Remove an element from a specific position in a list
   remove = (position) => {
+    var removedElement = this._dataStore[position];
     let arr = [
       ...this._dataStore.slice(0, position),
       ...this._dataStore.slice(position + 1, this.length),
     ];
     this._dataStore = arr;
     this.length -= 1;
-    return "element removed";
+    return removedElement;
   };
   // ? Insert an element at any position (not beyond bounds) in the list
   insert = (element, position) => {
@@ -90,3 +93,5 @@ export class List {
 }
 
 var groceries = new List();
+
+groceries.print();
