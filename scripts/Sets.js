@@ -68,6 +68,7 @@ export class Set {
         continue;
       }
     }
+    // return unionSet;
     return Object.keys(unionSet);
   };
   // ! This method gives the intersection of two arrays
@@ -166,7 +167,6 @@ set6.add("four");
 // console.log(set1.union(set2));
 // console.log(set1.intersection(set2));
 // console.log(set1.difference(set2));
-
 
 // * works with strings as well
 // set5.remove("one");
