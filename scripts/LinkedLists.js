@@ -283,11 +283,16 @@ export class CircularDoublyLinkedList {
   };
 
   findLast = () => {
-    var currentNode = this.head;
-    while (currentNode.next != this.head) {
-      currentNode = currentNode.next;
+    if (this.length) {
+      return this.head.prev;
     }
-    return currentNode;
+
+    // ! inefficient
+    // var currentNode = this.head;
+    // while (currentNode.next != this.head) {
+    //   currentNode = currentNode.next;
+    // }
+    // return currentNode;
   };
   insertAfter = (element, prevItem) => {
     var newNode = new DNode(element);
