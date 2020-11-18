@@ -121,6 +121,7 @@ export class DLinkedList {
     return currentNode;
   };
 
+  // ! inefficient for huge doubly linked lists. Needs traversal from head to tail
   findLast = () => {
     var currentNode = this.head;
     while (currentNode.next != null) {
@@ -143,6 +144,7 @@ export class DLinkedList {
       arr.push(currentNode.element);
       currentNode = currentNode.prev;
     }
+    // ! last push can be avoided if we do not want to include head
     arr.push(currentNode.element);
     console.log(arr);
   };
@@ -171,11 +173,10 @@ export class DLinkedList {
     console.log(arr);
   };
 }
-
 var DL = new DLinkedList();
 DL.insertAfter("manas", "head");
-DL.insertAfter("adya", "manas");
-DL.insertAfter("saloni", "adya");
+DL.insertAfter("jack", "manas");
+DL.insertAfter("mark", "jack");
 // DL.remove("manas")
 // console.log(DL.findLast());
 // DL.print();
@@ -199,16 +200,12 @@ export class CircularLinkedList {
   find = (item) => {
     var currentNode = this.head;
     while (currentNode.element != item) {
-      currentNode = currentNode.next;
-      if (currentNode == null) {
-        break;
+      if (currentNode.next == null) {
+        return null;
       }
+      currentNode = currentNode.next;
     }
-    if (currentNode != null) {
-      return currentNode;
-    } else {
-      console.warn("element not found");
-    }
+    return currentNode;
   };
   insertAfter = (newElement, afterItem) => {
     ++this.length;
@@ -277,16 +274,12 @@ export class CircularDoublyLinkedList {
   find = (item) => {
     var currentNode = this.head;
     while (currentNode.element != item) {
-      currentNode = currentNode.next;
-      if (currentNode == null) {
-        break;
+      if (currentNode.next == null) {
+        return null;
       }
+      currentNode = currentNode.next;
     }
-    if (currentNode != null) {
-      return currentNode;
-    } else {
-      console.warn("element not found");
-    }
+    return currentNode;
   };
 
   findLast = () => {
