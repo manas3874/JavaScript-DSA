@@ -96,50 +96,49 @@ class BinarySearchTree {
     return currentNode.data;
   };
 
-  showDistribution = () => {
-    // function dist(left, right) {
-    //   {
-    //     this.left = left;
-    //     this.right = right;
-    //   }
-    // }
-    var distribution = {};
-    var currentNode = this.root;
-    distribution["root"] = currentNode.data;
-    const distributor = (parent, current) => {
-      parent.left = currentNode.left.data;
-      parent.right = currentNode.right.data;
-      console.log("out");
-      if (current.right != null) {
-        distributor(parent.right, current.right);
-      } else {
-      }
-      if (current.left != null) {
-        distributor(parent.left, current.left);
-      }
-      return;
-    };
-    distributor(distribution, currentNode);
-    console.log(distribution);
-  };
+//   showDistribution = () => {
+//     function dist(left, right, info = null) {
+//       [(this.left = left), (this.right = right), (this.info = info)];
+//     }
+//     var distribution = {
+//       root: this.root.data,
+//     };
+//     var currentNode = this.root;
+//     // console.log(distribution);
+//     const distributor = (parent, current) => {
+//       console.log(current.left.data);
+//       parent["info"] = new dist(current.left, current.right);
+
+//       if (current.right != null) {
+//         distributor(parent["info"], current.right);
+//       }
+//       if (current.left != null) {
+//         distributor(parent["info"], current.left);
+//       }
+//       return;
+//     };
+//     distributor(distribution, currentNode);
+
+//     console.log(distribution);
+//   };
 }
 
 var bst = new BinarySearchTree();
 bst.insert(25);
 bst.insert(45);
 bst.insert(8);
-// bst.insert(12);
-// bst.insert(20);
-// bst.insert(9);
-// bst.insert(66);
-// bst.insert(13);
-// bst.insert(19);
-// bst.insert(22);
-// bst.insert(28);
-// bst.insert(5);
-// bst.insert(18);
-// bst.insert(27);
-// bst.insert(55);
-// bst.insert(17);
+bst.insert(12);
+bst.insert(20);
+bst.insert(9);
+bst.insert(66);
+bst.insert(13);
+bst.insert(19);
+bst.insert(22);
+bst.insert(28);
+bst.insert(5);
+bst.insert(18);
+bst.insert(27);
+bst.insert(55);
+bst.insert(17);
 timer(() => console.log(bst.findMin(), bst.findMax()));
-bst.showDistribution();
+// bst.showDistribution();
