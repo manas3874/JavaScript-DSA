@@ -14,19 +14,17 @@ export class LinkedList {
     this.head = new Node("head");
     this.length = 0;
   }
+  // ! find starts looking from the head of a linked list and returns the node which has the element == item (passed as argument)
   find = (item) => {
     var currentNode = this.head;
     while (currentNode.element != item) {
-      currentNode = currentNode.next;
-      if (currentNode == null) {
-        break;
+      if (currentNode.next == null) {
+        return null;
       }
+      currentNode = currentNode.next;
     }
-    if (currentNode != null) {
-      return currentNode;
-    } else {
-      console.warn("element not found");
-    }
+
+    return currentNode;
   };
 
   insertAfter = (newElement, afterItem) => {
@@ -81,14 +79,17 @@ export class LinkedList {
 var linked = new LinkedList();
 linked.insertAfter("manas", "head");
 
-linked.insertAfter("adya", "manas");
-linked.insertAfter("saloni", "adya");
+linked.insertAfter("jack", "manas");
+linked.insertAfter("matthew", "jack");
 linked.insertLast("josh");
-linked.insertAfter("punita", "saloni");
-linked.insertAfter("ajai", "punita");
+linked.insertAfter("cooper", "matthew");
+linked.insertAfter("pam", "cooper");
 // console.log(linked.findPrevious("ajai"));
 // linked.remove("manas");
-// console.log(linked.print())
+
+// console.log(linked.find("pam"));
+// console.log(linked.find("pamela")); // null
+// console.log(linked.print());
 
 // ! ***********************************************************************************************************************
 // ! DOUBLY LINKED LIST
@@ -112,16 +113,12 @@ export class DLinkedList {
   find = (item) => {
     var currentNode = this.head;
     while (currentNode.element != item) {
-      currentNode = currentNode.next;
-      if (currentNode == null) {
-        break;
+      if (currentNode.next == null) {
+        return null;
       }
+      currentNode = currentNode.next;
     }
-    if (currentNode != null) {
-      return currentNode;
-    } else {
-      console.warn("element not found");
-    }
+    return currentNode;
   };
 
   findLast = () => {

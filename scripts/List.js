@@ -94,4 +94,4 @@ export class List {
 
 var groceries = new List();
 
-groceries.print();
+

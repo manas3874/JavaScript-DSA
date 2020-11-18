@@ -1,6 +1,6 @@
 // ! ***********************************************************************************************************************
 // ! STACK
-// * One of the most basic and fundamental datastructure. The stack works in LIFO manner and mimics a pile of books, stack of trays, or most importantly - the call stack
+// * One of the most basic and fundamental datastructure. The stack works in LIFO manner and mimics a pile of books, stack of trays, or most importantly - The call stack
 
 // ! Implementation of a stack
 
@@ -16,9 +16,13 @@ export class Stack {
     ++this.top;
   };
   pop = () => {
-    --this.top;
-    --this.length;
-    return this._dataStore.pop();
+    if (this.length) {
+      --this.top;
+      --this.length;
+      return this._dataStore.pop();
+    } else {
+      return null;
+    }
   };
   peek = () => {
     if (this.length) {
@@ -48,8 +52,12 @@ export class Queue {
     ++this.length;
   };
   dequeue = () => {
-    --this.length;
-    return this._dataStore.shift();
+    if (this.length) {
+      --this.length;
+      return this._dataStore.shift();
+    } else {
+      return null;
+    }
   };
   print = () => {
     console.log(this._dataStore);
@@ -150,4 +158,3 @@ export class Deque {
   //* other methods can be added as per the requirement
 }
 var dequeExample = new Deque();
-
