@@ -6,6 +6,7 @@
 // * the two children are named left and right
 // * the left will always be lesser in mathematical comparison with the parent key (node) and the right will always be greater.
 
+import { timer } from "./timer.js";
 // ! Implementation of a BST
 
 function Node(data, left = null, right = null) {
@@ -48,6 +49,7 @@ class BinarySearchTree {
             return insertionFunction(currentNode.right);
           }
         } else {
+          // ! DATA not added to the tree because it already exists
           return false;
         }
       };
@@ -76,4 +78,68 @@ class BinarySearchTree {
     //   }
     // }
   };
+  // ! From the basics of a BST, we know that lesser values are placed on the left and greater values are placed on the right
+  findMin = () => {
+    // ! traverse all the way down on the left until you reach a node with null on the left
+    var currentNode = this.root;
+    while (currentNode.left != null) {
+      currentNode = currentNode.left;
+    }
+    return currentNode.data;
+  };
+  findMax = () => {
+    // ! traverse all the way down on the right until you reach a node with null on the right
+    var currentNode = this.root;
+    while (currentNode.right != null) {
+      currentNode = currentNode.right;
+    }
+    return currentNode.data;
+  };
+
+  showDistribution = () => {
+    // function dist(left, right) {
+    //   {
+    //     this.left = left;
+    //     this.right = right;
+    //   }
+    // }
+    var distribution = {};
+    var currentNode = this.root;
+    distribution["root"] = currentNode.data;
+    const distributor = (parent, current) => {
+      parent.left = currentNode.left.data;
+      parent.right = currentNode.right.data;
+      console.log("out");
+      if (current.right != null) {
+        distributor(parent.right, current.right);
+      } else {
+      }
+      if (current.left != null) {
+        distributor(parent.left, current.left);
+      }
+      return;
+    };
+    distributor(distribution, currentNode);
+    console.log(distribution);
+  };
 }
+
+var bst = new BinarySearchTree();
+bst.insert(25);
+bst.insert(45);
+bst.insert(8);
+// bst.insert(12);
+// bst.insert(20);
+// bst.insert(9);
+// bst.insert(66);
+// bst.insert(13);
+// bst.insert(19);
+// bst.insert(22);
+// bst.insert(28);
+// bst.insert(5);
+// bst.insert(18);
+// bst.insert(27);
+// bst.insert(55);
+// bst.insert(17);
+timer(() => console.log(bst.findMin(), bst.findMax()));
+bst.showDistribution();

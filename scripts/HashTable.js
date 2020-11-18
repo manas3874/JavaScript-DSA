@@ -72,7 +72,7 @@ hash.put("Clayton", new information("Clayton", 32, 92));
 hash.put("Raymond", new information("Raymond", 27, 71));
 hash.put("walter", new information("walter", 47, 81));
 
-timer(() => console.log(hash.printDistribution()));
+// timer(() => console.log(hash.printDistribution()));
 // console.log(hash.simpleHash("manas"));
 // console.log(hash.get("john"));
 // console.log(hash.get("Clayton"));
