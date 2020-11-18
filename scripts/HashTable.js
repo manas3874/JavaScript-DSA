@@ -6,7 +6,7 @@
 // ! Collisions are bound to happen, and there are multiple ways to handle a collision while making a HASH TABLE
 
 import { LinkedList } from "./LinkedLists.js";
-
+import { timer } from "./timer.js";
 export class HashTable {
   constructor() {
     this.table = new Array(137); // usually a prime number is taken as the length of the array, since it helps with the most used modular hash functions
@@ -71,8 +71,8 @@ hash.put("pixcy", new information("pixcy", 62, 42));
 hash.put("Clayton", new information("Clayton", 32, 92));
 hash.put("Raymond", new information("Raymond", 27, 71));
 hash.put("walter", new information("walter", 47, 81));
-hash.printDistribution();
 
+timer(() => console.log(hash.printDistribution()));
 // console.log(hash.simpleHash("manas"));
 // console.log(hash.get("john"));
 // console.log(hash.get("Clayton"));
