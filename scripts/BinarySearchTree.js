@@ -25,6 +25,7 @@ class BinarySearchTree {
       this.root = newNode;
       return true;
     } else {
+      
       // ! RECURSIVE approach
       var currentNode = this.root;
       const insertionFunction = (currentNode) => {
