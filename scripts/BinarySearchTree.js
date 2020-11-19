@@ -96,31 +96,31 @@ class BinarySearchTree {
     return currentNode.data;
   };
 
-//   showDistribution = () => {
-//     function dist(left, right, info = null) {
-//       [(this.left = left), (this.right = right), (this.info = info)];
-//     }
-//     var distribution = {
-//       root: this.root.data,
-//     };
-//     var currentNode = this.root;
-//     // console.log(distribution);
-//     const distributor = (parent, current) => {
-//       console.log(current.left.data);
-//       parent["info"] = new dist(current.left, current.right);
+  //   showDistribution = () => {
+  //     function dist(left, right, info = null) {
+  //       [(this.left = left), (this.right = right), (this.info = info)];
+  //     }
+  //     var distribution = {
+  //       root: this.root.data,
+  //     };
+  //     var currentNode = this.root;
+  //     // console.log(distribution);
+  //     const distributor = (parent, current) => {
+  //       console.log(current.left.data);
+  //       parent["info"] = new dist(current.left, current.right);
 
-//       if (current.right != null) {
-//         distributor(parent["info"], current.right);
-//       }
-//       if (current.left != null) {
-//         distributor(parent["info"], current.left);
-//       }
-//       return;
-//     };
-//     distributor(distribution, currentNode);
+  //       if (current.right != null) {
+  //         distributor(parent["info"], current.right);
+  //       }
+  //       if (current.left != null) {
+  //         distributor(parent["info"], current.left);
+  //       }
+  //       return;
+  //     };
+  //     distributor(distribution, currentNode);
 
-//     console.log(distribution);
-//   };
+  //     console.log(distribution);
+  //   };
 }
 
 var bst = new BinarySearchTree();
