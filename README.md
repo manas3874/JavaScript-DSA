@@ -24,6 +24,6 @@ All the code written here is for practice and making sure my logic works. I revi
 1. HASH TABLE
 1. BINARY SEARCH TREE
 
->[**BetterComments**](https://marketplace.visualstudio.com/items?itemName=aaron-bond.better-comments) - A VSCode extention is extensively used with this codebase. It will enhance the readability, I recommend using it.
+>[**BetterComments**](https://marketplace.visualstudio.com/items?itemName=aaron-bond.better-comments) - A VSCode extention which is extensively used with this codebase. It will enhance the readability, I recommend using it.
 
 >[**Bracket pair colorizer**](https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer) - A tool to make the content more readable. Since JavaScript involves deep nesting of brackets, it is great to have a visual guide to help read the code.
