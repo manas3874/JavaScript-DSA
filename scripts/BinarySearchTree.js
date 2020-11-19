@@ -110,49 +110,81 @@ class BinarySearchTree {
     return searchData(data, currentNode);
   };
 
+  // ! sorting a BST // RECURSIVE
+  inOrder = (currentSortingNode, ascending = true) => {
+    // ! by default we will sort in ascending order
+    if (ascending) {
+      if (currentSortingNode != null) {
+        this.inOrder(currentSortingNode.left);
+        console.log(currentSortingNode.data);
+        this.inOrder(currentSortingNode.right);
+      }
+    } else {
+      // ! descending order
+      if (currentSortingNode != null) {
+        this.inOrder(currentSortingNode.right, false);
+        console.log(currentSortingNode.data);
+        this.inOrder(currentSortingNode.left, false);
+      }
+    }
+  };
+
   // ! From the basics of a BST, we know that lesser values are placed on the left and greater values are placed on the right
-  findMin = () => {
+  findMin = (currentNode = this.root) => {
     // ! traverse all the way down on the left until you reach a node with null on the left
-    var currentNode = this.root;
+
     while (currentNode.left != null) {
       currentNode = currentNode.left;
     }
     return currentNode.data;
   };
-  findMax = () => {
+  findMax = (currentNode = this.root) => {
     // ! traverse all the way down on the right until you reach a node with null on the right
-    var currentNode = this.root;
+
     while (currentNode.right != null) {
       currentNode = currentNode.right;
     }
     return currentNode.data;
   };
-
-  //   showDistribution = () => {
-  //     function dist(left, right, info = null) {
-  //       [(this.left = left), (this.right = right), (this.info = info)];
-  //     }
-  //     var distribution = {
-  //       root: this.root.data,
-  //     };
-  //     var currentNode = this.root;
-  //     // console.log(distribution);
-  //     const distributor = (parent, current) => {
-  //       console.log(current.left.data);
-  //       parent["info"] = new dist(current.left, current.right);
-
-  //       if (current.right != null) {
-  //         distributor(parent["info"], current.right);
-  //       }
-  //       if (current.left != null) {
-  //         distributor(parent["info"], current.left);
-  //       }
-  //       return;
-  //     };
-  //     distributor(distribution, currentNode);
-
-  //     console.log(distribution);
-  //   };
+  remove = (data) => {
+    this.root = this.__removeNode(this.root, data);
+  };
+  // ! this removeNode method will return null somewhere during the execution and that null will be set to the element which we want to remove. basically, the parent which points to the removed data will lose the reference to the removed data
+  __removeNode = (currentNode, data) => {
+    // ! root node doesn't exist
+    if (currentNode == null) {
+      console.log("not found");
+      return null;
+    }
+    // ! if the node with specified data is found, check few cases
+    if (currentNode.data == data) {
+      // ! the currentNode has no children and we can safely delete the node
+      if (currentNode.left == null && currentNode.right == null) {
+        return null;
+      }
+      // ! the currentNode only has a subtree on the LEFT
+      if (currentNode.left != null && currentNode.right == null) {
+        return currentNode.left;
+      }
+      // ! the currentNode only has a subtree on the RIGHT
+      if (currentNode.left == null && currentNode.right != null) {
+        return currentNode.right;
+      }
+      // ! if the currentNode has a subtree on both the sides // MOST COMPLEX
+      var tempNodeData = this.findMin(currentNode.right); // ! find the minimum node on the right / or maximum node on the left
+      // console.log(tempNodeData);
+      currentNode.data = tempNodeData; // ! the node which was to be removed is removed, and is replaced with an appropriate node to maintain the BST principles
+      // ! now the currentNode.data and minimum of right are duplicated, so now we have to remove the minimum of the right
+      currentNode.right = this.__removeNode(currentNode.right, tempNodeData);
+      return currentNode;
+    } else if (data < currentNode.data) {
+      currentNode.left = this.__removeNode(currentNode.left, data);
+      return currentNode;
+    } else if (data > currentNode.data) {
+      currentNode.right = this.__removeNode(currentNode.right, data);
+      return currentNode;
+    }
+  };
 }
 
 var bst = new BinarySearchTree();
@@ -172,7 +204,11 @@ bst.insert(18);
 bst.insert(27);
 bst.insert(55);
 bst.insert(17);
-timer(() => console.log(bst.findMin(), bst.findMax()));
+// timer(() => console.log(bst.findMin(), bst.findMax()));
 // bst.showDistribution();
 
-console.log(bst.has(8));
+// console.log(bst.has(8));
+
+bst.remove(10);
+bst.remove(12);
+timer(() => bst.inOrder(bst.root));
