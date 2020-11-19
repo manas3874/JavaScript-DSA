@@ -25,7 +25,6 @@ class BinarySearchTree {
       this.root = newNode;
       return true;
     } else {
-      
       // ! RECURSIVE approach
       var currentNode = this.root;
       const insertionFunction = (currentNode) => {
@@ -79,6 +78,38 @@ class BinarySearchTree {
     //   }
     // }
   };
+  has = (data) => {
+    var currentNode = this.root;
+    if (currentNode.data == data) {
+      return currentNode;
+    }
+    const searchData = (data, currentNode) => {
+      if (data < currentNode.data) {
+        if (currentNode.left == null) {
+          return null;
+        }
+        if (currentNode.left.data == data) {
+          // console.log(currentNode.left);
+          return currentNode.left;
+        } else {
+          currentNode = currentNode.left;
+          searchData(currentNode);
+        }
+      } else if (data > currentNode.data) {
+        if (currentNode.right == null) {
+          return null;
+        }
+        if (currentNode.right.data == data) {
+          return currentNode.right;
+        } else {
+          currentNode = currentNode.right;
+          searchData(currentNode);
+        }
+      }
+    };
+    return searchData(data, currentNode);
+  };
+
   // ! From the basics of a BST, we know that lesser values are placed on the left and greater values are placed on the right
   findMin = () => {
     // ! traverse all the way down on the left until you reach a node with null on the left
@@ -143,3 +174,5 @@ bst.insert(55);
 bst.insert(17);
 timer(() => console.log(bst.findMin(), bst.findMax()));
 // bst.showDistribution();
+
+console.log(bst.has(8));
