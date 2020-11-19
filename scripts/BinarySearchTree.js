@@ -178,9 +178,11 @@ class BinarySearchTree {
       currentNode.right = this.__removeNode(currentNode.right, tempNodeData);
       return currentNode;
     } else if (data < currentNode.data) {
+      // ! current level is eliminated, check next level
       currentNode.left = this.__removeNode(currentNode.left, data);
       return currentNode;
     } else if (data > currentNode.data) {
+      // ! current level is eliminated, check next level
       currentNode.right = this.__removeNode(currentNode.right, data);
       return currentNode;
     }
