@@ -8,21 +8,21 @@ All the code written here is for practice and making sure my logic works. I revi
 
 * Other datastructures which are successfully implemented and ready to use are stored in separate *modules* from which we can import any ADT on our command.
 
-* The list of contents is as follows
-    1. RECURSION (soon to be added)
-    1. LIST 
-    1. STACK
-    1. QUEUE
-    1. PRIORITY QUEUE
-    1. DEQUE
-    1. LINKED LIST
-    1. DOUBLY LINKED LIST
-    1. CIRCULAR SINGLY LINKED LIST
-    1. CIRCULAR DOUBLY LINKED LIST
-    1. SETS
-    1. DICTIONARY
-    1. HASH TABLE
-    1. BINARY SEARCH TREE
+## The list of contents is as follows
+1. RECURSION (soon to be added)
+1. LIST 
+1. STACK
+1. QUEUE
+1. PRIORITY QUEUE
+1. DEQUE
+1. LINKED LIST
+1. DOUBLY LINKED LIST
+1. CIRCULAR SINGLY LINKED LIST
+1. CIRCULAR DOUBLY LINKED LIST
+1. SETS
+1. DICTIONARY
+1. HASH TABLE
+1. BINARY SEARCH TREE
 
 >[**BetterComments**](https://marketplace.visualstudio.com/items?itemName=aaron-bond.better-comments) - A VSCode extention is extensively used with this codebase. It will enhance the readability, I recommend using it.
 
