@@ -15,9 +15,10 @@ function Node(data, left = null, right = null) {
   this.right = right;
 }
 
-class BinarySearchTree {
+export class BinarySearchTree {
   constructor() {
     this.root = null;
+    this.count = 0;
   }
   insert = (data) => {
     var newNode = new Node(data);
@@ -54,6 +55,7 @@ class BinarySearchTree {
         }
       };
       insertionFunction(currentNode); //! currentNode = this.root
+      ++this.count;
     }
 
     // ! non recursive approach
@@ -110,23 +112,52 @@ class BinarySearchTree {
     return searchData(data, currentNode);
   };
 
-  // ! sorting a BST // RECURSIVE
-  inOrder = (currentSortingNode, ascending = true) => {
+  // ! ************************************************************************************************
+  // * 1. PRE-order traversal         visit the node | check left | check right
+  // * 2. IN-order traversal          check left | visit the node | check right -- Prints a sorted list of elements for BST
+  // * 3. POST-order traversal        check left | check right | visit the node
+  // ! ************************************************************************************************
+  preOrder = (currentNode = this.root) => {
+    var arrayOfData = [];
+    const recursivePreOrder = (currentNode) => {
+      arrayOfData.push(currentNode.data);
+      currentNode.left && recursivePreOrder(currentNode.left);
+      currentNode.right && recursivePreOrder(currentNode.right);
+    };
+    recursivePreOrder(currentNode);
+    return arrayOfData;
+  };
+  inOrder = (currentNode = this.root, ascending = true) => {
+    var arrayOfData = [];
     // ! by default we will sort in ascending order
-    if (ascending) {
-      if (currentSortingNode != null) {
-        this.inOrder(currentSortingNode.left);
-        console.log(currentSortingNode.data);
-        this.inOrder(currentSortingNode.right);
+    const recursiveInOrder = (currentNode, ascending) => {
+      if (ascending) {
+        if (currentNode != null) {
+          currentNode.left && recursiveInOrder(currentNode.left, ascending);
+          arrayOfData.push(currentNode.data);
+          currentNode.right && recursiveInOrder(currentNode.right, ascending);
+        }
+      } else {
+        // ! descending order
+        if (currentNode != null) {
+          currentNode.right && recursiveInOrder(currentNode.right, ascending);
+          arrayOfData.push(currentNode.data);
+          currentNode.left && recursiveInOrder(currentNode.left, ascending);
+        }
       }
-    } else {
-      // ! descending order
-      if (currentSortingNode != null) {
-        this.inOrder(currentSortingNode.right, false);
-        console.log(currentSortingNode.data);
-        this.inOrder(currentSortingNode.left, false);
-      }
-    }
+    };
+    recursiveInOrder(currentNode, ascending);
+    return arrayOfData;
+  };
+  postOrder = (currentNode = this.root) => {
+    var arrayOfData = [];
+    const recursivePostOrder = (currentNode) => {
+      currentNode.left && recursivePostOrder(currentNode.left);
+      currentNode.right && recursivePostOrder(currentNode.right);
+      arrayOfData.push(currentNode.data);
+    };
+    recursivePostOrder(currentNode);
+    return arrayOfData;
   };
 
   // ! From the basics of a BST, we know that lesser values are placed on the left and greater values are placed on the right
@@ -148,12 +179,14 @@ class BinarySearchTree {
   };
   remove = (data) => {
     this.root = this.__removeNode(this.root, data);
+    --this.count;
   };
   // ! this removeNode method will return null somewhere during the execution and that null will be set to the element which we want to remove. basically, the parent which points to the removed data will lose the reference to the removed data
   __removeNode = (currentNode, data) => {
     // ! root node doesn't exist
     if (currentNode == null) {
-      console.log("not found");
+      console.warn("not found");
+      ++this.count;
       return null;
     }
     // ! if the node with specified data is found, check few cases
@@ -211,6 +244,10 @@ bst.insert(17);
 
 // console.log(bst.has(8));
 
-bst.remove(10);
-bst.remove(12);
-timer(() => bst.inOrder(bst.root));
+// bst.remove(10);
+// bst.remove(26);
+// console.log(bst.count);
+
+// timer(() => console.log(bst.preOrder()));
+// timer(() => console.log(bst.inOrder()));
+// timer(() => console.log(bst.postOrder()));
