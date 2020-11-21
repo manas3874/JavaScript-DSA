@@ -220,6 +220,30 @@ export class BinarySearchTree {
       return currentNode;
     }
   };
+  // ! This function will find the height of the tree at any node
+  // ! basically, it waits to reach the leaf with no children so that it can return -1 (if we return 0 for leaf nodes, then additional +1 will make the counting wrong)
+  // ! once left and right return their heights, the parent node checks the maximum height and adds its own height (+1) and passes it to its parent
+  findHeight = (currentNode = this.root) => {
+    const recursiveHeight = (currentNode) => {
+      if (currentNode == null) {
+        return -1; // ! all leaf nodes return -1
+      }
+      let leftHeight = recursiveHeight(currentNode.left); // ! check the height of left
+      let rightHeight = recursiveHeight(currentNode.right); // ! check the height of right
+      return Math.max(leftHeight, rightHeight) + 1; // ! all non-leaf nodes return the maximum height of their children + their own height, to their parents
+    };
+    return recursiveHeight(currentNode);
+  };
+  isBalanced = (currentNode = this.root) => {
+    if (
+      Math.abs(
+        this.findHeight(currentNode.left) - this.findHeight(currentNode.right)
+      ) <= 1
+    ) {
+      return true;
+    }
+    return false;
+  };
 }
 
 var bst = new BinarySearchTree();
@@ -230,15 +254,15 @@ bst.insert(12);
 bst.insert(20);
 bst.insert(9);
 bst.insert(66);
-bst.insert(13);
-bst.insert(19);
-bst.insert(22);
-bst.insert(28);
-bst.insert(5);
-bst.insert(18);
-bst.insert(27);
-bst.insert(55);
-bst.insert(17);
+// bst.insert(13);
+// bst.insert(19);
+// bst.insert(22);
+// bst.insert(28);
+// bst.insert(5);
+// bst.insert(18);
+// bst.insert(27);
+// bst.insert(55);
+// bst.insert(17);
 // timer(() => console.log(bst.findMin(), bst.findMax()));
 // bst.showDistribution();
 
@@ -251,3 +275,7 @@ bst.insert(17);
 // timer(() => console.log(bst.preOrder()));
 // timer(() => console.log(bst.inOrder()));
 // timer(() => console.log(bst.postOrder()));
+// console.log(bst.findMinHeight());
+// console.log(bst.findMaxHeight());
+console.log(bst.findHeight(bst.root));
+console.log(bst.isBalanced());
