@@ -15,7 +15,7 @@ function Node(data, left = null, right = null) {
   this.right = right;
 }
 
-export class BinarySearchTree {
+export default class BinarySearchTree {
   constructor() {
     this.root = null;
     this.count = 0;
@@ -234,6 +234,8 @@ export class BinarySearchTree {
     };
     return recursiveHeight(currentNode);
   };
+
+  // ! To be a balanced tree (at any node), the height of the left and the right sub-tree must AT-MOST differ by 1
   isBalanced = (currentNode = this.root) => {
     if (
       Math.abs(
