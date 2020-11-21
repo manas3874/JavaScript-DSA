@@ -4,7 +4,7 @@
 
 // ! Implementation of a stack
 
-export class Stack {
+class Stack {
   constructor() {
     this._dataStore = [];
     this.top = 0;
@@ -42,16 +42,16 @@ let books = new Stack();
 // ! QUEUE
 // * QUEUE is another most important datastructure. This works on a FIFO model. Basically like a queue at a grocery store during the lockdown.
 
-export class Queue {
+class Queue {
   constructor() {
     this._dataStore = [];
     this.length = 0;
   }
-  enqueue = (element) => {
+  enQueue = (element) => {
     this._dataStore.push(element);
     ++this.length;
   };
-  dequeue = () => {
+  deQueue = () => {
     if (this.length) {
       --this.length;
       return this._dataStore.shift();
@@ -86,13 +86,13 @@ let bank = new Queue();
 // * Here we will take an example of a hospital Emergency ward, where the patients are given a priority state based on their seriousness
 
 // * Simple person constructor
-export function Patient(name, priority) {
+function Patient(name, priority) {
   this.name = name;
   this.priority = priority;
 }
 
 // * This will still be a basic queue, with an array based datastore, but the dequeue function will be redefined which will dequeue based on teh priority levels
-export class PriorityQueue {
+class PriorityQueue {
   constructor() {
     this._dataStore = [];
     this.length = 0;
@@ -131,7 +131,7 @@ hospital.enqueue(new Patient("carl", 2));
 // ! DEQUE
 // ! Deque is a queue like structure which lets us add/remove elements from the front or the back
 
-export class Deque {
+class Deque {
   constructor() {
     this._dataStore = [];
     this.length = 0;
@@ -158,3 +158,5 @@ export class Deque {
   //* other methods can be added as per the requirement
 }
 var dequeExample = new Deque();
+
+export { Stack, Queue, PriorityQueue, Deque };

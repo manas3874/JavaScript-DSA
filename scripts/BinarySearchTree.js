@@ -7,6 +7,7 @@
 // * the left will always be lesser in mathematical comparison with the parent key (node) and the right will always be greater.
 
 import { timer } from "./timer.js";
+import { Queue } from "./stack,queue,deque.js";
 // ! Implementation of a BST
 
 function Node(data, left = null, right = null) {
@@ -159,7 +160,18 @@ export default class BinarySearchTree {
     recursivePostOrder(currentNode);
     return arrayOfData;
   };
-
+  levelOrder = (currentNode = this.root) => {
+    var Q = new Queue();
+    var arrayOfData = [];
+    Q.enQueue(currentNode);
+    while (Q.length > 0) {
+      let node = Q.deQueue();
+      arrayOfData.push(node.data);
+      node.left && Q.enQueue(node.left);
+      node.right && Q.enQueue(node.right);
+    }
+    return arrayOfData;
+  };
   // ! From the basics of a BST, we know that lesser values are placed on the left and greater values are placed on the right
   findMin = (currentNode = this.root) => {
     // ! traverse all the way down on the left until you reach a node with null on the left
@@ -256,15 +268,15 @@ bst.insert(12);
 bst.insert(20);
 bst.insert(9);
 bst.insert(66);
-// bst.insert(13);
-// bst.insert(19);
-// bst.insert(22);
-// bst.insert(28);
-// bst.insert(5);
-// bst.insert(18);
-// bst.insert(27);
-// bst.insert(55);
-// bst.insert(17);
+bst.insert(13);
+bst.insert(19);
+bst.insert(22);
+bst.insert(28);
+bst.insert(5);
+bst.insert(18);
+bst.insert(27);
+bst.insert(55);
+bst.insert(17);
 // timer(() => console.log(bst.findMin(), bst.findMax()));
 // bst.showDistribution();
 
@@ -281,3 +293,4 @@ bst.insert(66);
 // console.log(bst.findMaxHeight());
 console.log(bst.findHeight(bst.root));
 console.log(bst.isBalanced());
+console.log(bst.levelOrder());
