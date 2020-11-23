@@ -10,10 +10,11 @@ import { timer, timerForHundred, timerForThousand } from "./timer.js";
 import { Queue } from "./stack,queue,deque.js";
 // ! Implementation of a BST
 
-function Node(data, left = null, right = null) {
+function Node(data, left = null, right = null, parent = null) {
   this.data = data;
   this.left = left;
   this.right = right;
+  this.parent = parent;
 }
 
 export default class BinarySearchTree {
@@ -25,7 +26,7 @@ export default class BinarySearchTree {
     var newNode = new Node(data);
     if (this.root == null) {
       this.root = newNode;
-      return true;
+      return this.root;
     } else {
       // ! RECURSIVE approach
       var currentNode = this.root;
@@ -35,7 +36,16 @@ export default class BinarySearchTree {
           if (currentNode.left == null) {
             // ! place is empty, place the new node here
             currentNode.left = newNode;
-            return true;
+            currentNode.left.parent = currentNode;
+            // console.log(
+            //   "after " +
+            //     newNode.data +
+            //     " tree is balanced : " +
+            //     this.isBalanced() +
+            //     " with factor " +
+            //     this.__balanceFactor()
+            // );
+            return currentNode.left;
           } else if (currentNode.left != null) {
             // ! if space is not empty, run a recursive check
             return insertionFunction(currentNode.left);
@@ -45,7 +55,16 @@ export default class BinarySearchTree {
           if (currentNode.right == null) {
             // ! place is empty, place the new node here
             currentNode.right = newNode;
-            return true;
+            currentNode.right.parent = currentNode;
+            // console.log(
+            //   "after " +
+            //     newNode.data +
+            //     " tree is balanced : " +
+            //     this.isBalanced() +
+            //     " with factor " +
+            //     this.__balanceFactor()
+            // );
+            return currentNode.right;
           } else if (currentNode.right != null) {
             // ! if space is not empty, run a recursive check
             return insertionFunction(currentNode.right);
@@ -55,8 +74,8 @@ export default class BinarySearchTree {
           return false;
         }
       };
-      insertionFunction(currentNode); //! currentNode = this.root
       ++this.count;
+      return insertionFunction(currentNode); //! currentNode = this.root
     }
 
     // ! non recursive approach
@@ -209,10 +228,12 @@ export default class BinarySearchTree {
       }
       // ! the currentNode only has a subtree on the LEFT
       if (currentNode.left != null && currentNode.right == null) {
+        currentNode.left.parent = currentNode.parent;
         return currentNode.left;
       }
       // ! the currentNode only has a subtree on the RIGHT
       if (currentNode.left == null && currentNode.right != null) {
+        currentNode.right.parent = currentNode.parent;
         return currentNode.right;
       }
       // ! if the currentNode has a subtree on both the sides // MOST COMPLEX
@@ -248,13 +269,17 @@ export default class BinarySearchTree {
   };
 
   __balanceFactor = (currentNode = this.root) => {
+    if (currentNode == null) {
+      return 0;
+    }
     return (
       this.findHeight(currentNode.left) - this.findHeight(currentNode.right)
     );
   };
   // ! To be a balanced tree (at any node), the height of the left and the right sub-tree must AT-MOST differ by 1
   isBalanced = (currentNode = this.root) => {
-    if (this.__balanceFactor(currentNode) in [-1, 0, 1]) {
+    // ! positive means left heavy, negative means right heavy
+    if ([-1, 0, 1].includes(this.__balanceFactor(currentNode))) {
       return true;
     }
     return false;
@@ -275,7 +300,7 @@ var autoInsertToTest = (numberOfNodes) => {
   Object.keys(objectOfData).forEach((item) => bst.insert(item));
   console.log(Object.keys(objectOfData));
 };
-autoInsertToTest(40);
+// autoInsertToTest(40);
 
 // bst.insert(25);
 // bst.insert(45);
@@ -283,6 +308,9 @@ autoInsertToTest(40);
 // bst.insert(12);
 // bst.insert(20);
 // bst.insert(9);
+// bst.remove(12);
+// console.log(bst.root);
+
 // bst.insert(66);
 // bst.insert(13);
 // bst.insert(19);
@@ -304,11 +332,12 @@ autoInsertToTest(40);
 // console.log(bst.count);
 
 // timer(() => console.log(bst.preOrder()));
-timer(() => console.log(bst.inOrder()));
+// timer(() => console.log(bst.inOrder()));
 // timer(() => console.log(bst.postOrder()));
 // console.log(bst.findMinHeight());
 // console.log(bst.findMaxHeight());
 // console.log(bst.findHeight(bst.root));
+// console.log(bst.__balanceFactor());
 // console.log(bst.isBalanced());
 // console.log(bst.levelOrder());
 // timer(bst.isBalanced);
