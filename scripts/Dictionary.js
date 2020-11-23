@@ -2,7 +2,7 @@
 // ! DICTIONARY
 // ! A dictionary lets us store the elements in a (key, value) pair. The JS object is much like a dictionary, but it is still useful to learn the implementation of an array-based-dictionary
 // ! has methods, sortOnKeys and sortOnValues, which are really helpful
-import { timer } from "./timer.js";
+import { timer, timerForHundred, timerForThousand } from "./timer.js";
 export class Dictionary {
   constructor() {
     // ! not using [] to initialize the array since we want to use the Object nature of the Array

@@ -6,7 +6,7 @@
 // ! Collisions are bound to happen, and there are multiple ways to handle a collision while making a HASH TABLE
 
 import { LinkedList } from "./LinkedLists.js";
-import { timer } from "./timer.js";
+import { timer, timerForHundred, timerForThousand } from "./timer.js";
 export class HashTable {
   constructor() {
     this.table = new Array(137); // usually a prime number is taken as the length of the array, since it helps with the most used modular hash functions

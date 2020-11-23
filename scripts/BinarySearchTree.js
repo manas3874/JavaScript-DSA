@@ -6,7 +6,7 @@
 // * the two children are named left and right
 // * the left will always be lesser in mathematical comparison with the parent key (node) and the right will always be greater.
 
-import { timer } from "./timer.js";
+import { timer, timerForHundred, timerForThousand } from "./timer.js";
 import { Queue } from "./stack,queue,deque.js";
 // ! Implementation of a BST
 
@@ -261,22 +261,38 @@ export default class BinarySearchTree {
 }
 
 var bst = new BinarySearchTree();
-bst.insert(25);
-bst.insert(45);
-bst.insert(8);
-bst.insert(12);
-bst.insert(20);
-bst.insert(9);
-bst.insert(66);
-bst.insert(13);
-bst.insert(19);
-bst.insert(22);
-bst.insert(28);
-bst.insert(5);
-bst.insert(18);
-bst.insert(27);
-bst.insert(55);
-bst.insert(17);
+
+// ! automatically adding data for testing
+var autoInsertToTest = (numberOfNodes) => {
+  var arrayOfData = [];
+  while (arrayOfData.length < numberOfNodes) {
+    let num = Math.floor(Math.random() * 100);
+    if (num in arrayOfData) {
+      continue;
+    }
+    arrayOfData.push(num);
+  }
+  arrayOfData.forEach((item) => bst.insert(item));
+};
+// autoInsertToTest(20);
+
+// bst.insert(25);
+// bst.insert(45);
+// bst.insert(8);
+// bst.insert(12);
+// bst.insert(20);
+// bst.insert(9);
+// bst.insert(66);
+// bst.insert(13);
+// bst.insert(19);
+// bst.insert(22);
+// bst.insert(28);
+// bst.insert(5);
+// bst.insert(18);
+// bst.insert(27);
+// bst.insert(55);
+// bst.insert(17);
+// bst.insert(108);
 // timer(() => console.log(bst.findMin(), bst.findMax()));
 // bst.showDistribution();
 
@@ -291,6 +307,9 @@ bst.insert(17);
 // timer(() => console.log(bst.postOrder()));
 // console.log(bst.findMinHeight());
 // console.log(bst.findMaxHeight());
-console.log(bst.findHeight(bst.root));
-console.log(bst.isBalanced());
-console.log(bst.levelOrder());
+// console.log(bst.findHeight(bst.root));
+// console.log(bst.isBalanced());
+// console.log(bst.levelOrder());
+// timer(bst.isBalanced);
+// timerForHundred(bst.isBalanced);
+// timerForThousand(bst.isBalanced);

@@ -1,6 +1,8 @@
 // ! *****************************************
 // ! Random JavaScript testing and practice
 
+import { timer, timerForHundred, timerForThousand } from "./timer.js";
+
 // ! class keyword in ES6
 
 class People {
@@ -482,3 +484,20 @@ var manas = new Hobby("Manas", 22, "Web developer", "cooking");
 // }
 // console.log(pairSum([0, -1, 2, -3, 1], -2)); // -3,1
 // console.log(pairSum([1, -2, 1, 0, 5], 0)); // -1
+
+// ! CONVERT DECIMAL (BASE 10) TO BINARY NUMBER
+var decimalToBinary = (number) => {
+  var arr = [];
+  var recursive = (number) => {
+    if (number < 2) {
+      arr.push(number);
+      return;
+    }
+    arr.push(number % 2);
+    number = Math.floor(number / 2);
+    recursive(number);
+  };
+  recursive(number);
+  return arr.reverse();
+};
+// timerForThousand(() => decimalToBinary(919224234100));
