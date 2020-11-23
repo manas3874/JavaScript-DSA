@@ -247,13 +247,14 @@ export default class BinarySearchTree {
     return recursiveHeight(currentNode);
   };
 
+  __balanceFactor = (currentNode = this.root) => {
+    return (
+      this.findHeight(currentNode.left) - this.findHeight(currentNode.right)
+    );
+  };
   // ! To be a balanced tree (at any node), the height of the left and the right sub-tree must AT-MOST differ by 1
   isBalanced = (currentNode = this.root) => {
-    if (
-      Math.abs(
-        this.findHeight(currentNode.left) - this.findHeight(currentNode.right)
-      ) <= 1
-    ) {
+    if (this.__balanceFactor(currentNode) in [-1, 0, 1]) {
       return true;
     }
     return false;
