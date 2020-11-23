@@ -264,17 +264,17 @@ var bst = new BinarySearchTree();
 
 // ! automatically adding data for testing
 var autoInsertToTest = (numberOfNodes) => {
-  var arrayOfData = [];
-  while (arrayOfData.length < numberOfNodes) {
+  var objectOfData = {};
+  while (Object.keys(objectOfData).length < numberOfNodes) {
     let num = Math.floor(Math.random() * 100);
-    if (num in arrayOfData) {
-      continue;
+    if (!(num in objectOfData)) {
+      objectOfData[num] = 1;
     }
-    arrayOfData.push(num);
   }
-  arrayOfData.forEach((item) => bst.insert(item));
+  Object.keys(objectOfData).forEach((item) => bst.insert(item));
+  console.log(Object.keys(objectOfData));
 };
-// autoInsertToTest(20);
+autoInsertToTest(40);
 
 // bst.insert(25);
 // bst.insert(45);
@@ -303,7 +303,7 @@ var autoInsertToTest = (numberOfNodes) => {
 // console.log(bst.count);
 
 // timer(() => console.log(bst.preOrder()));
-// timer(() => console.log(bst.inOrder()));
+timer(() => console.log(bst.inOrder()));
 // timer(() => console.log(bst.postOrder()));
 // console.log(bst.findMinHeight());
 // console.log(bst.findMaxHeight());
