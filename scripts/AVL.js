@@ -121,6 +121,8 @@ var avlTree = new AVL();
 // avlTree.insertNode(8);
 // avlTree.insertNode(7);
 // avlTree.insertNode(9);
+// timer(() => autoInsertToTest(100, avlTree.insertNode));
+// timerForHundred(() => autoInsertToTest(100, avlTree.insertNode));
 timerForThousand(() => autoInsertToTest(100, avlTree.insertNode));
 console.log(avlTree.isBalanced());
 console.log(avlTree.__balanceFactor());
