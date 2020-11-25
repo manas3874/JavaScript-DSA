@@ -1,44 +1,44 @@
-import BinarySearchTree from "./BinarySearchTree.js";
-
+import BinarySearchTree, { autoInsertToTest } from "./BinarySearchTree.js";
+import { timer, timerForHundred, timerForThousand } from "./timer.js";
 export class AVL extends BinarySearchTree {
   constructor() {
     super();
   }
   insertNode = (data) => {
     var insertedNode = this.insert(data);
-    console.log(insertedNode);
+    // console.log(insertedNode);
     // ! after each insertion, the root's balance is checked, the rotations are always carried out upon the root
     // ! checking the balance of root and performing action
-    this.__rotationRequirement(this.root, insertedNode);
+    return this.__rotationRequirement(this.root, insertedNode);
   };
 
   __rotationRequirement = (currentNode, insertedNode) => {
-    if (this.__balanceFactor(currentNode) == -2) {
-      console.log(currentNode.data + " is right heavy");
+    if (this.__balanceFactor(currentNode) < -1) {
+      // console.log(currentNode.data + " is right heavy");
       // ! new data is more than right data of unbalanced node
       if (insertedNode.data > currentNode.right.data) {
-        console.log("RR rotation required");
+        // console.log("RR rotation required");
         this.root = this.__RRRotation(currentNode);
         return;
       }
 
       // ! new data is less than right data of unbalanced node
       if (insertedNode.data < currentNode.right.data) {
-        console.log("RL rotation required");
+        // console.log("RL rotation required");
         this.root = this.__RLRotation(currentNode);
         return;
       }
-    } else if (this.__balanceFactor(currentNode) == 2) {
-      console.log(currentNode.data + " is left heavy");
+    } else if (this.__balanceFactor(currentNode) > 1) {
+      // console.log(currentNode.data + " is left heavy");
       // ! new data is less than left data of unbalanced node
       if (insertedNode.data < currentNode.left.data) {
-        console.log("LL rotation required");
+        // console.log("LL rotation required");
         this.root = this.__LLRotation(currentNode);
         return;
       }
       // ! new data is more than left data of unbalanced node
       if (insertedNode.data > currentNode.left.data) {
-        console.log("LR roatation required");
+        // console.log("LR rotation required");
         this.root = this.__LRRotation(currentNode);
         return;
       }
@@ -114,12 +114,16 @@ var avlTree = new AVL();
 // avlTree.insertNode(6);
 // avlTree.insertNode(7);
 
-avlTree.insertNode(10);
-avlTree.insertNode(11);
-avlTree.insertNode(5);
+// avlTree.insertNode(10);
+// avlTree.insertNode(11);
+// avlTree.insertNode(5);
 // avlTree.insertNode(4);
-avlTree.insertNode(8);
-avlTree.insertNode(7);
-avlTree.insertNode(9);
-console.log(avlTree.inOrder());
+// avlTree.insertNode(8);
+// avlTree.insertNode(7);
+// avlTree.insertNode(9);
+timerForThousand(() => autoInsertToTest(100, avlTree.insertNode));
+console.log(avlTree.isBalanced());
+console.log(avlTree.__balanceFactor());
+timer(avlTree.inOrder);
+// console.log(());
 // console.log(avlTree.root);

@@ -289,18 +289,18 @@ export default class BinarySearchTree {
 var bst = new BinarySearchTree();
 
 // ! automatically adding data for testing
-var autoInsertToTest = (numberOfNodes) => {
+export const autoInsertToTest = (numberOfNodes, insertionMethod) => {
   var objectOfData = {};
   while (Object.keys(objectOfData).length < numberOfNodes) {
-    let num = Math.floor(Math.random() * 100);
+    let num = Math.floor(Math.random() * 1000);
     if (!(num in objectOfData)) {
       objectOfData[num] = 1;
     }
   }
-  Object.keys(objectOfData).forEach((item) => bst.insert(item));
-  console.log(Object.keys(objectOfData));
+  Object.keys(objectOfData).forEach((item) => insertionMethod(item));
+  // console.log(Object.keys(objectOfData));
 };
-// autoInsertToTest(40);
+// autoInsertToTest(40, bst.insert);
 
 // bst.insert(25);
 // bst.insert(45);
