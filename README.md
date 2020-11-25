@@ -23,6 +23,7 @@ All the code written here is for practice and making sure my logic works. I revi
 1. DICTIONARY
 1. HASH TABLE
 1. BINARY SEARCH TREE
+1. AVL TREE
 
 >[**BetterComments**](https://marketplace.visualstudio.com/items?itemName=aaron-bond.better-comments) - A VSCode extention which is extensively used with this codebase. It will enhance the readability, I recommend using it.
 
