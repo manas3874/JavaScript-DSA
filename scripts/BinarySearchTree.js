@@ -100,11 +100,11 @@ export default class BinarySearchTree {
     //   }
     // }
   };
-  has = (data) => {
-    var currentNode = this.root;
+  has = (data, currentNode) => {
     if (currentNode.data == data) {
       return currentNode;
     }
+    // console.log(currentNode);
     const searchData = (data, currentNode) => {
       if (data < currentNode.data) {
         if (currentNode.left == null) {
@@ -115,7 +115,7 @@ export default class BinarySearchTree {
           return currentNode.left;
         } else {
           currentNode = currentNode.left;
-          searchData(currentNode);
+          return searchData(data, currentNode);
         }
       } else if (data > currentNode.data) {
         if (currentNode.right == null) {
@@ -125,7 +125,7 @@ export default class BinarySearchTree {
           return currentNode.right;
         } else {
           currentNode = currentNode.right;
-          searchData(currentNode);
+          return searchData(data, currentNode);
         }
       }
     };
@@ -302,12 +302,12 @@ export const autoInsertToTest = (numberOfNodes, insertionMethod) => {
 };
 // autoInsertToTest(40, bst.insert);
 
-// bst.insert(25);
-// bst.insert(45);
-// bst.insert(8);
-// bst.insert(12);
-// bst.insert(20);
-// bst.insert(9);
+bst.insert(25);
+bst.insert(45);
+bst.insert(8);
+bst.insert(12);
+bst.insert(20);
+bst.insert(9);
 // bst.remove(12);
 // console.log(bst.root);
 
@@ -325,7 +325,7 @@ export const autoInsertToTest = (numberOfNodes, insertionMethod) => {
 // timer(() => console.log(bst.findMin(), bst.findMax()));
 // bst.showDistribution();
 
-// console.log(bst.has(8));
+// console.log(bst.has(8, bst.root));
 
 // bst.remove(10);
 // bst.remove(26);
