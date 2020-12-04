@@ -9,7 +9,7 @@ All the code written here is for practice and making sure my logic works. I revi
 * Other datastructures which are successfully implemented and ready to use are stored in separate *modules* from which we can import any ADT on our command.
 
 ## The list of contents is as follows
-1. RECURSION (soon to be added)
+1. RECURSION (major implementations are using recursion. Core examples to be added)
 1. LIST 
 1. STACK
 1. QUEUE
