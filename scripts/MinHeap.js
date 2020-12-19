@@ -106,6 +106,6 @@ var minHeap = new MinHeap();
 // timerForThousand(() => autoInsertToTest(100, minHeap.insert));
 autoInsertToTest(100, minHeap.insert);
 // timerForThousand(minHeap.sort);
-console.log(minHeap.sort())
+// console.log(minHeap.sort())
 
-console.log(minHeap.dataStore);
+// console.log(minHeap.dataStore);

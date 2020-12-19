@@ -37,14 +37,7 @@ export default class BinarySearchTree {
             // ! place is empty, place the new node here
             currentNode.left = newNode;
             currentNode.left.parent = currentNode;
-            // console.log(
-            //   "after " +
-            //     newNode.data +
-            //     " tree is balanced : " +
-            //     this.isBalanced() +
-            //     " with factor " +
-            //     this.__balanceFactor()
-            // );
+
             return currentNode.left;
           } else if (currentNode.left != null) {
             // ! if space is not empty, run a recursive check
@@ -56,14 +49,7 @@ export default class BinarySearchTree {
             // ! place is empty, place the new node here
             currentNode.right = newNode;
             currentNode.right.parent = currentNode;
-            // console.log(
-            //   "after " +
-            //     newNode.data +
-            //     " tree is balanced : " +
-            //     this.isBalanced() +
-            //     " with factor " +
-            //     this.__balanceFactor()
-            // );
+
             return currentNode.right;
           } else if (currentNode.right != null) {
             // ! if space is not empty, run a recursive check
@@ -77,28 +63,6 @@ export default class BinarySearchTree {
       ++this.count;
       return insertionFunction(currentNode); //! currentNode = this.root
     }
-
-    // ! non recursive approach
-    // else {
-    //   var currentNode = this.root;
-    //   var parentNode;
-    //   while (true) {
-    //     parentNode = currentNode;
-    //     if (data < parentNode.data) {
-    //       currentNode = parentNode.left;
-    //       if (currentNode == null) {
-    //         parentNode.left = newNode;
-    //         break;
-    //       }
-    //     } else {
-    //       currentNode = parentNode.right;
-    //       if (currentNode == null) {
-    //         parentNode.right = newNode;
-    //         break;
-    //       }
-    //     }
-    //   }
-    // }
   };
   has = (data, currentNode) => {
     if (currentNode.data == data) {

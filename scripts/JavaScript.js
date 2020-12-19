@@ -501,3 +501,221 @@ var decimalToBinary = (number) => {
   return arr.reverse();
 };
 // timerForThousand(() => decimalToBinary(919224234100));
+
+// ! electrostatics
+
+var electrostatics = (input1, input2, input3) => {
+  let count = 0;
+  for (let i = 0; i < input3; i++) {
+    if (input2[i] == "P") {
+      count += input1[i];
+    } else if (input2[i] == "N") {
+      count -= input1[i];
+    }
+  }
+  return Math.abs(count) * 100;
+};
+// console.log(electrostatics([2, 3], "PN", 2));
+
+// ! jacksparrow
+
+var jack = (input1, input2, input3, input4) => {
+  var jumpCounter = 0;
+  for (let i = 0; i < input3; i++) {
+    let height = input4[i];
+    while (height > input1) {
+      jumpCounter += 1;
+      height = height - input1 + input2; // ! this line changed
+    }
+    jumpCounter += 1;
+  }
+  return jumpCounter;
+};
+// console.log(jack(5, 1, 2, [9, 10]));
+
+// ! decrypted
+
+var decrypted = (input1, input2) => {
+  let charList = [];
+  for (let i = 0; i <= input1.length; i += 2) {
+    for (let j = 0; j < Number(input1[i + 1]); j++) {
+      charList.push(input1[i]);
+    }
+  }
+  // console.log(charList);
+  return charList[input2 - 1] == undefined ? -1 : charList[input2 - 1];
+};
+
+// console.log(decrypted("a3b2", 7));
+
+// ! student marks
+
+var marks = (input1, input2) => {
+  // ! sorted array
+  input2 = input2.sort(function (a, b) {
+    return a - b;
+  }); //! without arrow
+
+  // console.log(input2);
+  let i = 0;
+  while (i + 1 < input1) {
+    if (input2[i] + 1 != input2[i + 1]) {
+      return 0;
+    }
+    i++;
+  }
+  return 1;
+};
+
+// console.log(marks(6, [3, 7, 2, 9, 4, 6]));
+
+// ! min divisible
+var minDivisible = (input1) => {
+  let i = 2;
+  var temp;
+  while (true) {
+    if (i == 100) {
+      return -1;
+    }
+    temp = input1 * i;
+    i++;
+    let summer = 0;
+    for (let char of temp.toString()) {
+      summer += Number(char);
+    }
+    if (summer == input1) {
+      break;
+    }
+  }
+  return temp;
+};
+
+// console.log(minDivisible(10));
+
+// ! shifter
+
+var shifter = (input1, input2, input3) => {
+  var tempArr = [];
+  for (let i = 0; i < input3; i++) {
+    tempArr.push(input2.shift());
+  }
+  return [...input2, ...tempArr];
+};
+
+// console.log(shifter(9, [1, 7, 8, 5, 4, 6, 0, 2, 3], 3));
+
+// ! even odd sorter
+
+var sorter = (input1, input2) => {
+  input2 = input2.sort(function (a, b) {
+    return a - b;
+  });
+  var arrOfEven = [];
+  var arrOfOdd = [];
+  for (let item of input2) {
+    if (item % 2 == 0) {
+      arrOfEven.push(item);
+    } else {
+      arrOfOdd.push(item);
+    }
+  }
+  var tempArr = [];
+  if (Math.min(...input2) % 2 == 0) {
+    while (tempArr.length <= input1) {
+      tempArr.push(arrOfEven.shift());
+      tempArr.push(arrOfOdd.shift());
+    }
+  } else if (Math.min(...input2) % 2 == 1) {
+    while (tempArr.length <= input1) {
+      tempArr.push(arrOfOdd.shift());
+      tempArr.push(arrOfEven.shift());
+    }
+  }
+  if (input1 % 2 == 1) {
+    tempArr.pop();
+  }
+  return tempArr;
+};
+
+// console.log(sorter(5, [47, 49, 36, 98, 90]));
+
+// ! second max
+
+var secondMax = (input1, input2) => {
+  let firstMax = Math.max(...input2);
+  for (let i = 0; i < input1; i++) {
+    if (input2[i] == firstMax) {
+      input2[i] = -1;
+    }
+  }
+  return Math.max(...input2);
+};
+
+// console.log(secondMax(3, [2, 2, 2]));
+
+// ! clever students
+
+var clever = (input1, input2) => {
+  var count = 0;
+  for (let i = 0; i < input1; i++) {
+    for (let j = i; j <= input1; j++) {
+      if (input2[i] > input2[j]) {
+        count += 1;
+      }
+    }
+  }
+  return count;
+};
+
+// console.log(clever(5, [1, 1, 3, 6, 2]));
+
+// ! student marks total
+
+var school = (input1, input2, input3) => {
+  var arrForLeast = [];
+  for (let i = 0; i < input2; i++) {
+    //! subject
+    var tempCount = 0;
+    for (let j = 0; j < input1; j++) {
+      //! student
+      tempCount += input3[j][i];
+    }
+    arrForLeast.push(tempCount);
+  }
+  let indexOfLeast = arrForLeast.indexOf(Math.min(...arrForLeast));
+  var arrOfTotal = [];
+  for (let item of input3) {
+    item[indexOfLeast] = 0;
+    let count = 0;
+    for (let k = 0; k < item.length; k++) {
+      count += item[k];
+    }
+    arrOfTotal.push(count);
+  }
+  return arrOfTotal;
+};
+
+// console.log(
+//   school(3, 5, [
+//     [75, 76, 65, 87, 87],
+//     [78, 76, 68, 56, 89],
+//     [67, 87, 78, 77, 65],
+//   ])
+// );
+
+// ! factorial
+
+var factorial = (input1) => {
+  var count = 0;
+  while (true) {
+    let temp = Math.floor(input1 / 5);
+    count += temp;
+    input1 = temp;
+    if (input1 < 5) {
+      break;
+    }
+  }
+  return count;
+};
+
+// console.log(factorial(1123));
