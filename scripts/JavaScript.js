@@ -719,3 +719,146 @@ var factorial = (input1) => {
 };
 
 // console.log(factorial(1123));
+
+// ! Mettl test 28 Feb 2021
+
+// ? a2b3, 7
+const nthLetter = (input1, input2) => {
+  const unique = input1.length / 2;
+  var arrOfItems = input1.split("");
+  var str = "";
+  for (let i = 0; i < unique; i++) {
+    const current = arrOfItems.splice(0, 2);
+    for (let j = 0; j < Number(current[1]); j++) {
+      str += current[0];
+    }
+  }
+  return str[input2 - 1] ? str[input2 - 1] : -1;
+};
+// console.log(nthLetter("a1b1c3", 5));
+
+// ! Words reverse
+
+const rev = (input1) => {
+  return input1.split(" ").reverse().join(" ");
+};
+
+// console.log(rev("My name is khan"));
+
+// ! largest + smallest
+
+const largeSmall = (input1, input2) => {
+  return Math.max(...input2) + Math.min(...input2);
+};
+
+// console.log(largeSmall(4, [9, 5, 0, 11]));
+
+// ! Postfix evaluation
+
+// function isOperator(toCheck) {
+//   switch (toCheck) {
+//     case "+":
+//     case "-":
+//     case "*":
+//     case "/":
+//     case "%":
+//       return true;
+//     default:
+//       return false;
+//   }
+// }
+
+// function compute(a, operator, b) {
+//   return operator(a, b);
+// }
+
+// function symbolToOperator(symbol) {
+//   switch (symbol) {
+//     case "+":
+//       return plus;
+//     case "-":
+//       return minus;
+//     case "*":
+//       return multiply;
+//     case "/":
+//       return divide;
+//     case "%":
+//       return modulo;
+//   }
+// }
+
+// function plus(a, b) {
+//   return a + b;
+// }
+// function minus(a, b) {
+//   return a - b;
+// }
+// function multiply(a, b) {
+//   return a * b;
+// }
+// function divide(a, b) {
+//   return a / b;
+// }
+// function modulo(a, b) {
+//   return a % b;
+// }
+
+// var expression = "8 7 9 - 2 * +";
+
+// var postfix = expression.split(" ");
+// var postfixStack = [];
+// postfix.forEach(function (current) {
+//   if (isOperator(current)) {
+//     postfixStack.push(
+//       compute(postfixStack.pop(), symbolToOperator(current), postfixStack.pop())
+//     );
+//   } else {
+//     postfixStack.push(current);
+//   }
+// });
+
+const evalPostfix = (input1) => {
+  // known operators
+  var operators = {
+    "+": function (a, b) {
+      return a + b;
+    },
+    "-": function (a, b) {
+      return a - b;
+    },
+    "*": function (a, b) {
+      return a * b;
+    },
+    "/": function (a, b) {
+      return a / b;
+    },
+  };
+
+  var input = "879-2*+";
+  // run through all commands in the input
+  var stack = [];
+  for (var i = 0; i < input.length; i++) {
+    var cmd = input[i];
+
+    // known operator
+    if (cmd in operators) {
+      // get the function
+      var f = operators[cmd];
+
+      // get the correct number of arguments
+      var args = [];
+      for (var j = 0; j < f.length; j++) args.unshift(stack.shift());
+
+      // apply and push back onto the stack
+      // note: the first argument to apply is 'this'
+      stack.unshift(f.apply(undefined, args));
+    }
+
+    // anything else, push onto the stack as either a number or string
+    else {
+      stack.unshift(isNaN(parseFloat(cmd)) ? cmd : parseFloat(cmd));
+    }
+  }
+  return stack[0];
+};
+// console.log(stack[0]);
