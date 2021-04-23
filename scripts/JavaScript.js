@@ -26,7 +26,7 @@ class Hobby extends People {
   //! inheritance
   constructor(name, age, profession, hobby) {
     super(name, age, profession); //! using the parent class to store values
-    this.hobby = hobby; //! storing values of the child class
+    this.hobby = hobby; //! storing values of the child class?
   }
 }
 
@@ -755,68 +755,6 @@ const largeSmall = (input1, input2) => {
 
 // ! Postfix evaluation
 
-// function isOperator(toCheck) {
-//   switch (toCheck) {
-//     case "+":
-//     case "-":
-//     case "*":
-//     case "/":
-//     case "%":
-//       return true;
-//     default:
-//       return false;
-//   }
-// }
-
-// function compute(a, operator, b) {
-//   return operator(a, b);
-// }
-
-// function symbolToOperator(symbol) {
-//   switch (symbol) {
-//     case "+":
-//       return plus;
-//     case "-":
-//       return minus;
-//     case "*":
-//       return multiply;
-//     case "/":
-//       return divide;
-//     case "%":
-//       return modulo;
-//   }
-// }
-
-// function plus(a, b) {
-//   return a + b;
-// }
-// function minus(a, b) {
-//   return a - b;
-// }
-// function multiply(a, b) {
-//   return a * b;
-// }
-// function divide(a, b) {
-//   return a / b;
-// }
-// function modulo(a, b) {
-//   return a % b;
-// }
-
-// var expression = "8 7 9 - 2 * +";
-
-// var postfix = expression.split(" ");
-// var postfixStack = [];
-// postfix.forEach(function (current) {
-//   if (isOperator(current)) {
-//     postfixStack.push(
-//       compute(postfixStack.pop(), symbolToOperator(current), postfixStack.pop())
-//     );
-//   } else {
-//     postfixStack.push(current);
-//   }
-// });
-
 const evalPostfix = (input1) => {
   // known operators
   var operators = {
@@ -861,4 +799,3 @@ const evalPostfix = (input1) => {
   }
   return stack[0];
 };
-// console.log(stack[0]);

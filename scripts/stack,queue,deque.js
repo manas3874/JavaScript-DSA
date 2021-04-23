@@ -91,7 +91,7 @@ function Patient(name, priority) {
   this.priority = priority;
 }
 
-// * This will still be a basic queue, with an array based datastore, but the dequeue function will be redefined which will dequeue based on teh priority levels
+// * This will still be a basic queue, with an array based datastore, but the dequeue function will be redefined which will dequeue based on the priority levels
 class PriorityQueue {
   constructor() {
     this._dataStore = [];

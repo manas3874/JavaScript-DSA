@@ -1,6 +1,6 @@
 // ! ***********************************************************************************************************************
 // ! List
-// * The list is a basic datastructure found in any programming language. The numebr of elements in a list determines the length of a list. We can perform multiple tasks like add, remove, read, insert, print, check within the list, etc.
+// * The list is a basic datastructure found in any programming language. The number of elements in a list determines the length of a list. We can perform multiple tasks like add, remove, read, insert, print, check within the list, etc.
 
 // ! implementation of a List in JavaScript
 export class List {
@@ -38,11 +38,10 @@ export class List {
   // ? Remove an element from a specific position in a list
   remove = (position) => {
     var removedElement = this._dataStore[position];
-    let arr = [
+    this._dataStore = [
       ...this._dataStore.slice(0, position),
       ...this._dataStore.slice(position + 1, this.length),
     ];
-    this._dataStore = arr;
     this.length -= 1;
     return removedElement;
   };
@@ -93,5 +92,3 @@ export class List {
 }
 
 var groceries = new List();
-
-
