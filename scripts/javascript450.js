@@ -72,6 +72,7 @@ const kthSmallest = (arr, k) => {
 
 // console.log(kthSmallest([1, 3, 4, 2], 2));
 
+// * ***************************************************************************
 // ! 4 Given an array of size N containing only 0s, 1s, and 2s; sort the array in ascending order.
 
 const sort012 = (arr) => {
@@ -98,7 +99,8 @@ const sort012 = (arr) => {
 
 // console.log(sort012([0, 2, 1, 2, 0]));
 
-// ! Move all negative numbers to beginning and positive to end with constant extra space
+// * ***************************************************************************
+// ! 5 Move all negative numbers to beginning and positive to end with constant extra space
 
 const moveNegative = (arr) => {
   let deque = [];
@@ -116,7 +118,8 @@ const moveNegative = (arr) => {
 
 // console.log(moveNegative([-12, 11, -13, -5, 6, -7, 5, -3, -6]));
 
-// ! Given two arrays a[] and b[]. The task is to find the length of union between these two arrays.
+// * ***************************************************************************
+// ! 6 Given two arrays a[] and b[]. The task is to find the length of union between these two arrays.
 
 const unionLength = (arr1, arr2) => {
   let obj = {};
@@ -131,11 +134,12 @@ const unionLength = (arr1, arr2) => {
 
 // console.log(unionLength([1, 2, 3, 4, 5], [1, 2, 3]));
 
-// ! Given an array, rotate the array by one position in clock-wise direction.
+// * ***************************************************************************
+// ! 7 Given an array, rotate the array by one position in clock-wise direction.
 
 const rotateClockwise = (arr) => {
   arr.unshift(arr.pop());
   return arr;
 };
 
-console.log(rotateClockwise([1, 2, 3, 4, 5]));
+// console.log(rotateClockwise([1, 2, 3, 4, 5]));
